@@ -29,7 +29,7 @@ struct AlertView: View {
                 if let title = $vm.title.wrappedValue {
                     Text(title)
                         .font(.kr15b)
-                        .foregroundColor(.textColor1)
+                        .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                 }
                 if let description = $vm.description.wrappedValue {

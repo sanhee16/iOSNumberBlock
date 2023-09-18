@@ -59,4 +59,9 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = AlertView.vc(self, type: type, title: title, description: description, callback: callback)
         self.present(vc, animated: false)
     }
+    
+    func presentQuizView() {
+        let vc = QuizView.vc(self)
+        self.present(vc, animated: false)
+    }
 }
