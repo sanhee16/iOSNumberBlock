@@ -13,5 +13,5 @@ struct Unit: Equatable, Hashable, Codable {
     }
     var uuid: String = UUID().uuidString
     var idx: Int // idx, 순서
-    var complete: Int // epochTime
+    var complete: Int = 0 // epochTime
 }

@@ -7,5 +7,9 @@
 import Foundation
 
 class UnitRepository: AnyRepository<Unit> {
-    
+    func initRepository() {
+        for i in 0..<2 {
+            try? self.insert(item: Unit(idx: i))
+        }
+    }
 }

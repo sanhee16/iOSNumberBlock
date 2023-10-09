@@ -15,8 +15,10 @@ import AppTrackingTransparency
 
 class SplashViewModel: BaseViewModel {
     private var timerRepeat: Timer?
+    private let unitRepository: UnitRepository
     
-    override init(_ coordinator: AppCoordinator) {
+    init(_ coordinator: AppCoordinator, unitRepository: UnitRepository) {
+        self.unitRepository = unitRepository
         super.init(coordinator)
     }
     
@@ -45,7 +47,7 @@ class SplashViewModel: BaseViewModel {
     }
     
     private func firstLaunchTask() {
-        
+        initDB()
     }
     
     
@@ -79,4 +81,9 @@ class SplashViewModel: BaseViewModel {
         }
     }
     
+    
+    private func initDB() {
+        // unit
+        self.unitRepository.initRepository()
+    }
 }
