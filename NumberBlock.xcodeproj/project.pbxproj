@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		26155AC82AD3FC1400FEC8BF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 26155AC72AD3FC1400FEC8BF /* Realm */; };
 		26155ACA2AD3FC1400FEC8BF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26155AC92AD3FC1400FEC8BF /* RealmSwift */; };
+		26155ACE2AD3FC4E00FEC8BF /* AnyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155ACD2AD3FC4E00FEC8BF /* AnyRepository.swift */; };
+		26155AD02AD3FC5300FEC8BF /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155ACF2AD3FC5300FEC8BF /* Repository.swift */; };
+		26155AD42AD3FC9D00FEC8BF /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155AD32AD3FC9D00FEC8BF /* AppConfiguration.swift */; };
+		26155AD62AD3FCAD00FEC8BF /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155AD52AD3FCAD00FEC8BF /* AppDIContainer.swift */; };
+		26155AD82AD3FCD400FEC8BF /* UnitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155AD72AD3FCD400FEC8BF /* UnitRepository.swift */; };
+		26155ADC2AD3FD1B00FEC8BF /* UnitStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155ADB2AD3FD1B00FEC8BF /* UnitStorage.swift */; };
 		26353E6D2AB856B70050D4FE /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26353E6C2AB856B70050D4FE /* QuizView.swift */; };
 		26353E6F2AB856BD0050D4FE /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26353E6E2AB856BD0050D4FE /* QuizViewModel.swift */; };
 		26353E712AB85B9D0050D4FE /* QuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26353E702AB85B9D0050D4FE /* QuizData.swift */; };
@@ -53,6 +59,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26155ACD2AD3FC4E00FEC8BF /* AnyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRepository.swift; sourceTree = "<group>"; };
+		26155ACF2AD3FC5300FEC8BF /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		26155AD32AD3FC9D00FEC8BF /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		26155AD52AD3FCAD00FEC8BF /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		26155AD72AD3FCD400FEC8BF /* UnitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitRepository.swift; sourceTree = "<group>"; };
+		26155ADB2AD3FD1B00FEC8BF /* UnitStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitStorage.swift; sourceTree = "<group>"; };
 		26353E6C2AB856B70050D4FE /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		26353E6E2AB856BD0050D4FE /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		26353E702AB85B9D0050D4FE /* QuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizData.swift; sourceTree = "<group>"; };
@@ -116,6 +128,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26155ACB2AD3FC3A00FEC8BF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				26155ACC2AD3FC4500FEC8BF /* Repository */,
+				26900A142A2B266A00653275 /* Model */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		26155ACC2AD3FC4500FEC8BF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				26155ACD2AD3FC4E00FEC8BF /* AnyRepository.swift */,
+				26155ACF2AD3FC5300FEC8BF /* Repository.swift */,
+				26155AD72AD3FCD400FEC8BF /* UnitRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		26155AD12AD3FC7600FEC8BF /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				26155AD22AD3FC8100FEC8BF /* DI */,
+				26900A012A2B252200653275 /* Base */,
+				269009FC2A2B246500653275 /* Delegate */,
+				269009F72A2B235500653275 /* Coordinator */,
+				26155AD32AD3FC9D00FEC8BF /* AppConfiguration.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		26155AD22AD3FC8100FEC8BF /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				26155AD52AD3FCAD00FEC8BF /* AppDIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		26155AD92AD3FD0300FEC8BF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				26155ADA2AD3FD0900FEC8BF /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		26155ADA2AD3FD0900FEC8BF /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				26155ADB2AD3FD1B00FEC8BF /* UnitStorage.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		26353E6B2AB8568E0050D4FE /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,16 +228,15 @@
 		269009E82A2B224600653275 /* NumberBlock */ = {
 			isa = PBXGroup;
 			children = (
+				26155AD92AD3FD0300FEC8BF /* Domain */,
+				26155AD12AD3FC7600FEC8BF /* Application */,
+				26155ACB2AD3FC3A00FEC8BF /* Data */,
 				266BFAA02A2DB9A900AB640F /* Info.plist */,
 				26ED560F2A2C1A64006A8810 /* ApiInfo.plist */,
 				26ED56102A2C1A64006A8810 /* NumberBlock++Bundle.swift */,
 				26ED55FD2A2C0E77006A8810 /* Resource */,
 				26900A192A2B28CD00653275 /* UI */,
-				26900A142A2B266A00653275 /* Model */,
 				26900A062A2B256800653275 /* Common */,
-				26900A012A2B252200653275 /* Base */,
-				269009FC2A2B246500653275 /* Delegate */,
-				269009F72A2B235500653275 /* Coordinator */,
 				269009EF2A2B224800653275 /* Preview Content */,
 			);
 			path = NumberBlock;
@@ -454,7 +520,9 @@
 				26900A112A2B261400653275 /* Util.swift in Sources */,
 				26ED560C2A2C19F1006A8810 /* MainView.swift in Sources */,
 				26353E6D2AB856B70050D4FE /* QuizView.swift in Sources */,
+				26155AD02AD3FC5300FEC8BF /* Repository.swift in Sources */,
 				2665527F2ACD386A004621C8 /* QuizModel.swift in Sources */,
+				26155AD62AD3FCAD00FEC8BF /* AppDIContainer.swift in Sources */,
 				26ED56082A2C19E8006A8810 /* SplashView.swift in Sources */,
 				267019D02A2C5212001C18B5 /* C.swift in Sources */,
 				26ED56342A2C218C006A8810 /* AdView.swift in Sources */,
@@ -462,20 +530,24 @@
 				26900A1C2A2B28DD00653275 /* SProgress.swift in Sources */,
 				267019D42A2C54C6001C18B5 /* RemoteConfig.swift in Sources */,
 				269009FE2A2B248200653275 /* AppDelegate.swift in Sources */,
+				26155AD82AD3FCD400FEC8BF /* UnitRepository.swift in Sources */,
 				269009FB2A2B238300653275 /* Coordinator.swift in Sources */,
 				26900A0D2A2B25BC00653275 /* AlertViewModel.swift in Sources */,
 				269009F92A2B236900653275 /* AppCoordinator.swift in Sources */,
 				26900A162A2B267100653275 /* DataModel.swift in Sources */,
 				26900A182A2B26D700653275 /* SwiftExtension.swift in Sources */,
 				26900A0F2A2B25E400653275 /* SwiftUIExtension.swift in Sources */,
+				26155AD42AD3FC9D00FEC8BF /* AppConfiguration.swift in Sources */,
 				26ED56092A2C19E8006A8810 /* SplashViewModel.swift in Sources */,
 				267019D22A2C52B5001C18B5 /* MainTabBar.swift in Sources */,
 				26ED560D2A2C19F1006A8810 /* MainViewModel.swift in Sources */,
+				26155ACE2AD3FC4E00FEC8BF /* AnyRepository.swift in Sources */,
 				26900A002A2B248900653275 /* SceneDelegate.swift in Sources */,
 				26900A0B2A2B25B500653275 /* AlertView.swift in Sources */,
 				26900A132A2B263200653275 /* Defaults.swift in Sources */,
 				26900A052A2B253000653275 /* BaseViewModel.swift in Sources */,
 				26900A082A2B257500653275 /* NetworkMonitor.swift in Sources */,
+				26155ADC2AD3FD1B00FEC8BF /* UnitStorage.swift in Sources */,
 				2665527D2ACD3858004621C8 /* UnitModel.swift in Sources */,
 				26ED56142A2C1A64006A8810 /* NumberBlock++Bundle.swift in Sources */,
 				26353E712AB85B9D0050D4FE /* QuizData.swift in Sources */,

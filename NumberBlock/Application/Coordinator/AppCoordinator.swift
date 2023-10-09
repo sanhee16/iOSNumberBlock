@@ -10,7 +10,8 @@ import SwiftUI
 class AppCoordinator: Coordinator, Terminatable {
     // UIWindow = 화면에 나타나는 View를 묶고, UI의 배경을 제공하고, 이벤트 처리행동을 제공하는 객체 = View들을 담는 컨테이너
     let window: UIWindow
-    
+    let appDIContainer = AppDIContainer.shared
+
     /*
      SceneDelegate에서 window rootViewController 설정해줘야 하는데 window 여기로 가지고와서 여기서 설정해줌
      */
