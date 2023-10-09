@@ -59,7 +59,7 @@ class SplashViewModel: BaseViewModel {
     
     func onStartSplashTimer() { //2초 후에 메인 시작
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.coordinator?.presentMain()
+            self?.coordinator?.presentSelectUnit()
         }
     }
     
@@ -67,7 +67,6 @@ class SplashViewModel: BaseViewModel {
     func startRepeatTimer() {
         timerRepeat = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerFireRepeat(timer:)), userInfo: "check permission", repeats: true)
     }
-    
     
     // 반복 타이머 종료
     func stopRepeatTimer() {

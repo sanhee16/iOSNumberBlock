@@ -50,6 +50,11 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
+    func presentSelectUnit() {
+        let vc = SelectUnitView.vc(self, unitRepository: appDIContainer.unitRepository)
+        self.present(vc, animated: true)
+    }
+    
     //MARK: Present
     func presentMain() {
         let vc = MainView.vc(self)

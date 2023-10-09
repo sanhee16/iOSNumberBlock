@@ -8,8 +8,8 @@ import Foundation
 
 class UnitRepository: AnyRepository<Unit> {
     func initRepository() {
-        for i in 0..<2 {
-            try? self.insert(item: Unit(idx: i))
+        for i in 0..<5 {
+            try? self.insert(item: Unit(idx: i, openTime: i == 0 ? Int(Date().timeIntervalSince1970) : 0))
         }
     }
 }

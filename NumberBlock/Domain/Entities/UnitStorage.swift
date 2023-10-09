@@ -13,7 +13,8 @@ extension Unit: Entity {
         let realm = UnitStorage()
         realm.uuid = uuid
         realm.idx = idx
-        realm.complete = complete
+        realm.openTime = openTime
+        realm.completeTime = completeTime
         return realm
     }
     
@@ -25,11 +26,12 @@ extension Unit: Entity {
 class UnitStorage: Object, Storable {
     @Persisted(primaryKey: true) var uuid: String = ""
     @Persisted var idx: Int //idx, 순서
-    @Persisted var complete: Int // epochTime
+    @Persisted var openTime: Int // epochTime
+    @Persisted var completeTime: Int // epochTime
     
     var model: Unit {
         get {
-            return Unit(uuid: uuid, idx: idx, complete: complete)
+            return Unit(uuid: uuid, idx: idx, openTime: openTime, completeTime: completeTime)
         }
     }
 }

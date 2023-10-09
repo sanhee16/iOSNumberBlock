@@ -15,6 +15,8 @@
 		26155AD62AD3FCAD00FEC8BF /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155AD52AD3FCAD00FEC8BF /* AppDIContainer.swift */; };
 		26155AD82AD3FCD400FEC8BF /* UnitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155AD72AD3FCD400FEC8BF /* UnitRepository.swift */; };
 		26155ADC2AD3FD1B00FEC8BF /* UnitStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155ADB2AD3FD1B00FEC8BF /* UnitStorage.swift */; };
+		26155ADE2AD4069C00FEC8BF /* SelectUnitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155ADD2AD4069C00FEC8BF /* SelectUnitView.swift */; };
+		26155AE02AD406A000FEC8BF /* SelectUnitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26155ADF2AD406A000FEC8BF /* SelectUnitViewModel.swift */; };
 		26353E6D2AB856B70050D4FE /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26353E6C2AB856B70050D4FE /* QuizView.swift */; };
 		26353E6F2AB856BD0050D4FE /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26353E6E2AB856BD0050D4FE /* QuizViewModel.swift */; };
 		26353E712AB85B9D0050D4FE /* QuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26353E702AB85B9D0050D4FE /* QuizData.swift */; };
@@ -65,6 +67,8 @@
 		26155AD52AD3FCAD00FEC8BF /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		26155AD72AD3FCD400FEC8BF /* UnitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitRepository.swift; sourceTree = "<group>"; };
 		26155ADB2AD3FD1B00FEC8BF /* UnitStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitStorage.swift; sourceTree = "<group>"; };
+		26155ADD2AD4069C00FEC8BF /* SelectUnitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUnitView.swift; sourceTree = "<group>"; };
+		26155ADF2AD406A000FEC8BF /* SelectUnitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUnitViewModel.swift; sourceTree = "<group>"; };
 		26353E6C2AB856B70050D4FE /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		26353E6E2AB856BD0050D4FE /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		26353E702AB85B9D0050D4FE /* QuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizData.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		266552822ACD39C4004621C8 /* SelectUnit */ = {
 			isa = PBXGroup;
 			children = (
+				26155ADD2AD4069C00FEC8BF /* SelectUnitView.swift */,
+				26155ADF2AD406A000FEC8BF /* SelectUnitViewModel.swift */,
 			);
 			path = SelectUnit;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				26900A1C2A2B28DD00653275 /* SProgress.swift in Sources */,
 				267019D42A2C54C6001C18B5 /* RemoteConfig.swift in Sources */,
 				269009FE2A2B248200653275 /* AppDelegate.swift in Sources */,
+				26155AE02AD406A000FEC8BF /* SelectUnitViewModel.swift in Sources */,
 				26155AD82AD3FCD400FEC8BF /* UnitRepository.swift in Sources */,
 				269009FB2A2B238300653275 /* Coordinator.swift in Sources */,
 				26900A0D2A2B25BC00653275 /* AlertViewModel.swift in Sources */,
@@ -537,6 +544,7 @@
 				26900A162A2B267100653275 /* DataModel.swift in Sources */,
 				26900A182A2B26D700653275 /* SwiftExtension.swift in Sources */,
 				26900A0F2A2B25E400653275 /* SwiftUIExtension.swift in Sources */,
+				26155ADE2AD4069C00FEC8BF /* SelectUnitView.swift in Sources */,
 				26155AD42AD3FC9D00FEC8BF /* AppConfiguration.swift in Sources */,
 				26ED56092A2C19E8006A8810 /* SplashViewModel.swift in Sources */,
 				267019D22A2C52B5001C18B5 /* MainTabBar.swift in Sources */,
