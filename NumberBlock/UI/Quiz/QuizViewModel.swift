@@ -10,6 +10,35 @@ import Combine
 import SwiftUIPager
 import SwiftUI
 
+enum QuizAnswer: Int {
+    case no1 = 1
+    case no2 = 2
+    case no3 = 3
+    case no4 = 4
+    case no5 = 5
+    case no6 = 6
+    case no7 = 7
+    case no8 = 8
+    case no9 = 9
+    case no10 = 10
+    
+    var selectedColor: Color {
+        switch self {
+        case .no1: return .no1
+        case .no2: return .no2
+        case .no3: return .no3
+        case .no4: return .no4
+        case .no5: return .no5
+        case .no6: return .no6
+        case .no7: return .no7
+        case .no8: return .no8
+        case .no9: return .no9
+        case .no10: return .no10
+        }
+    }
+}
+
+
 enum QuizScoreStatus {
     case correct
     case incorrect
@@ -122,5 +151,12 @@ class QuizViewModel: BaseViewModel {
             self.status = .none
             onComplete?()
         }
+    }
+    
+    func setSelectedColor(_ idx: Int) -> Color {
+        let cnt = self.quizItems[self.pageIdx].answerBlock.filter { $0 == true }.count
+//        QuizAnswer(rawValue: cnt).
+        print(cnt)
+        return QuizAnswer(rawValue: cnt)?.selectedColor ?? .selected
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseCore
 
 //@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate ??
 @main
@@ -51,6 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // network connection
         NetworkMonitor.shared.startMonitoring()
+        
+        // firebase
+        FirebaseApp.configure()
         
         return true
     }

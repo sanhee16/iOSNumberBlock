@@ -54,6 +54,10 @@
 		2588CE3E69AA5B90795D56C0CF690169 /* RectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BC1C891EE30562B70BA911071F626E /* RectNode.swift */; };
 		25C0BB78B5796916B6A81E9F020370AE /* LayerModel+makeAnimationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8086DCD46E45373FDA6E5193382A5FE /* LayerModel+makeAnimationLayer.swift */; };
 		262E21164B9B907372777722BD3D6D8F /* MaskCompositionLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773F87887B9B7A847BE13AE7FD8A1F22 /* MaskCompositionLayer.swift */; };
+		2665528A2ACD3AA8004621C8 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 266552892ACD3AA8004621C8 /* FirebaseAnalyticsSwift */; };
+		2665528C2ACD3AA8004621C8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 2665528B2ACD3AA8004621C8 /* FirebaseMessaging */; };
+		2665528E2ACD3AA8004621C8 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2665528D2ACD3AA8004621C8 /* FirebaseRemoteConfigSwift */; };
+		266552902ACD3AA8004621C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2665528F2ACD3AA8004621C8 /* FirebaseStorage */; };
 		2691D0A77FE45FA208C217E0B7836FC1 /* LayerTransformNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DA1C54E273AC47E16A5C68B4E9FD21 /* LayerTransformNode.swift */; };
 		2728CD20E5EE6DCF61777A0CF579D4D8 /* PrecompAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192DD9692B9D81D8C04C186ACE956D1 /* PrecompAsset.swift */; };
 		274390663DE2ECFBEFC9E00876FA0A28 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEDE8393CCAF29064F9A2A01534C82 /* StringExtensions.swift */; };
@@ -418,7 +422,7 @@
 		36496433A917EFF2732B503B15918671 /* Data+CompressionDeprecated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+CompressionDeprecated.swift"; path = "Sources/Private/Model/DotLottie/ZipFoundation/Data+CompressionDeprecated.swift"; sourceTree = "<group>"; };
 		369438A234EF38D51D6E49CD7F70CA83 /* LottieAnimationCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LottieAnimationCache.swift; path = Sources/Public/AnimationCache/LottieAnimationCache.swift; sourceTree = "<group>"; };
 		36E9183B1E8A3020AF71E9CE3908AB68 /* SheetSize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SheetSize.swift; path = FittedSheets/SheetSize.swift; sourceTree = "<group>"; };
-		36F623FDC4D75668B469B72347CCBFEA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = Sources/Private/Model/DotLottie/ZipFoundation/README.md; sourceTree = "<group>"; };
+		36F623FDC4D75668B469B72347CCBFEA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Sources/Private/Model/DotLottie/ZipFoundation/README.md; sourceTree = "<group>"; };
 		37BC1C891EE30562B70BA911071F626E /* RectNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RectNode.swift; path = Sources/Private/MainThread/NodeRenderSystem/Nodes/PathNodes/RectNode.swift; sourceTree = "<group>"; };
 		37C31AA286DC305AF16AF76F1D651E11 /* SingleValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SingleValueProvider.swift; path = Sources/Private/MainThread/NodeRenderSystem/NodeProperties/ValueProviders/SingleValueProvider.swift; sourceTree = "<group>"; };
 		3A29F0C922D689D342DF254F1DDA475E /* SwiftUIPager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftUIPager-Info.plist"; sourceTree = "<group>"; };
@@ -548,7 +552,7 @@
 		9BC58D0C74052620712B2164D650D77E /* Pods-NumberBlock-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NumberBlock-frameworks.sh"; sourceTree = "<group>"; };
 		9CA9CC8C3CC269DD579EF3A48C93553C /* LottieColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LottieColor.swift; path = Sources/Public/Primitives/LottieColor.swift; sourceTree = "<group>"; };
 		9CCFDD62CC7726CEE2A6C1B06789DF2A /* RequestCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestCompression.swift; path = Source/RequestCompression.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D9D27AC0A90E6ED3809ACFF4CA560A3 /* DotLottieManifest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DotLottieManifest.swift; path = Sources/Private/Model/DotLottie/DotLottieManifest.swift; sourceTree = "<group>"; };
 		9E13040BA146A5DB9C1CC100721138BD /* View+Helper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "View+Helper.swift"; path = "Sources/SwiftUIPager/Helpers/View+Helper.swift"; sourceTree = "<group>"; };
 		9EA4F2D26D6E9D259B5AE5C5894EFBF0 /* Page.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Sources/SwiftUIPager/Page.swift; sourceTree = "<group>"; };
@@ -692,8 +696,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2665528C2ACD3AA8004621C8 /* FirebaseMessaging in Frameworks */,
+				2665528A2ACD3AA8004621C8 /* FirebaseAnalyticsSwift in Frameworks */,
+				2665528E2ACD3AA8004621C8 /* FirebaseRemoteConfigSwift in Frameworks */,
 				D7BCBE1EB4A638403C265CE2199EFF1B /* CFNetwork.framework in Frameworks */,
 				8E85763AE29BEF0A46EE875B8F069E8E /* Foundation.framework in Frameworks */,
+				266552902ACD3AA8004621C8 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,7 +815,6 @@
 				87E4359017083D955826C767B98898A3 /* Validation.swift */,
 				0A6B101D91EF6BEE39C61ABAE86B7F28 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -843,7 +850,6 @@
 				9E13040BA146A5DB9C1CC100721138BD /* View+Helper.swift */,
 				89A6940B496CC8D614F2690EA661B20D /* Support Files */,
 			);
-			name = SwiftUIPager;
 			path = SwiftUIPager;
 			sourceTree = "<group>";
 		};
@@ -883,7 +889,6 @@
 				E09FD3356E502121F078DC96A25ADEF0 /* Yalta.swift */,
 				A46F11120726823794CAF52FEBE47B06 /* Support Files */,
 			);
-			name = FittedSheets;
 			path = FittedSheets;
 			sourceTree = "<group>";
 		};
@@ -1120,7 +1125,6 @@
 				7F6B8ACFB4C77D3D2C908E386428D92F /* VisibilityAnimation.swift */,
 				0AFB1AEEC5AAA18F9AEE52E861E2363D /* Support Files */,
 			);
-			name = "lottie-ios";
 			path = "lottie-ios";
 			sourceTree = "<group>";
 		};
@@ -1318,6 +1322,12 @@
 			dependencies = (
 			);
 			name = Alamofire;
+			packageProductDependencies = (
+				266552892ACD3AA8004621C8 /* FirebaseAnalyticsSwift */,
+				2665528B2ACD3AA8004621C8 /* FirebaseMessaging */,
+				2665528D2ACD3AA8004621C8 /* FirebaseRemoteConfigSwift */,
+				2665528F2ACD3AA8004621C8 /* FirebaseStorage */,
+			);
 			productName = Alamofire;
 			productReference = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */;
 			productType = "com.apple.product-type.framework";
@@ -1340,6 +1350,9 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			packageReferences = (
+				266552882ACD3AA8004621C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = FF8078711A20552652350F350A778989 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2290,6 +2303,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		266552882ACD3AA8004621C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		266552892ACD3AA8004621C8 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266552882ACD3AA8004621C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		2665528B2ACD3AA8004621C8 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266552882ACD3AA8004621C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		2665528D2ACD3AA8004621C8 /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266552882ACD3AA8004621C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+		2665528F2ACD3AA8004621C8 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266552882ACD3AA8004621C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

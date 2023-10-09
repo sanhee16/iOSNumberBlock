@@ -179,6 +179,17 @@ extension Color {
     public static let inputBoxColor: Color = Color(hex: "#DADADA")
     
     //MARK: primeColor
+    public static let no1: Color = Color(hex: "#d00000").opacity(0.75) // 빨강
+    public static let no2: Color = Color(hex: "#ffbe0b").opacity(0.75) // 노랑
+    public static let no3: Color = Color(hex: "#4361ee").opacity(0.75) // 파랑
+    public static let no4: Color = Color(hex: "#fb6f92").opacity(0.75) // 핑크
+    public static let no5: Color = Color(hex: "#fb6107").opacity(0.75) // 주황
+    public static let no6: Color = Color(hex: "#6fffe9").opacity(0.75) // 민트
+    public static let no7: Color = Color(hex: "#7209b7").opacity(0.75) // 보라
+    public static let no8: Color = Color(hex: "#70e000").opacity(0.75) // 초록
+    public static let no9: Color = Color(hex: "#caf0f8").opacity(0.75) // 하늘
+    public static let no10: Color = Color(hex: "#774936").opacity(0.75) // 갈색
+    
     public static let selected: Color = Color(hex: "#8FC9F3")
     public static let unSelected: Color = Color(hex: "#DADADA")
     

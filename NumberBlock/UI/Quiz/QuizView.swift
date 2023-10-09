@@ -103,8 +103,8 @@ struct QuizItemView: View {
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
                     HStack(alignment: .center, spacing: 20) {
-                        drawBlockBox(item.block1)
-                        drawBlockBox(item.block2)
+                        drawBlockBox(item.block1, color: .green.opacity(0.4))
+                        drawBlockBox(item.block2, color: .red.opacity(0.4))
                     }
                     Spacer()
                     drawAnswerBlockBox()
@@ -127,12 +127,12 @@ struct QuizItemView: View {
     }
     
     
-    private func drawBlockBox(_ cnt: Int) -> some View {
-        return LazyVGrid(columns: Array(repeating: .init(.fixed(blockSize), spacing:  8), count: 2), spacing: 8) {
+    private func drawBlockBox(_ cnt: Int, color: Color) -> some View {
+        return LazyVGrid(columns: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 2), spacing: 0.5) {
             ForEach(0..<10, id: \.self) { i in
                 RoundedRectangle(cornerRadius: 10)
                     .frame(both: blockSize)
-                    .foregroundColor(i < cnt ? .selected : .unSelected)
+                    .foregroundColor(i < cnt ? color : .unSelected)
             }
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
@@ -145,16 +145,31 @@ struct QuizItemView: View {
     
     
     private func drawAnswerBlockBox() -> some View {
-        return LazyVGrid(columns: Array(repeating: .init(.fixed(blockSize), spacing:  8), count: 2), spacing: 8) {
-            ForEach(0..<10, id: \.self) { idx in
-                let item = $vm.quizItems.wrappedValue[$vm.pageIdx.wrappedValue]
-                RoundedRectangle(cornerRadius: 10)
+        return VStack(alignment: .center, spacing: 8) {
+            LazyVGrid(columns: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 2), spacing: 0.5) {
+                ForEach(0..<10, id: \.self) { idx in
+                    let item = $vm.quizItems.wrappedValue[$vm.pageIdx.wrappedValue]
+                    ZStack(alignment: .center) {
+                        RoundedRectangle(cornerRadius: 10)
+                        if item.answerBlock[idx] {
+                            Text("10")
+                                .font(.kr16b)
+                                .foregroundColor(.black)
+                                .zIndex(1)
+                        }
+                    }
                     .frame(both: blockSize)
-                    .foregroundColor(item.answerBlock[idx] ? .selected : .unSelected)
+                    .foregroundColor(
+                        item.answerBlock[idx] ? vm.setSelectedColor(idx) : .unSelected
+                    )
                     .onTapGesture {
                         vm.onClickAnswerBlock(idx)
                     }
+                }
             }
+            Text("\($vm.quizItems.wrappedValue[$vm.pageIdx.wrappedValue].answerBlock.filter { $0 == true }.count)")
+                .font(.kr20b)
+            
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         .background(
