@@ -45,6 +45,6 @@ final class FetchLevelListUseCase: FetchListUseCase {
     }
 
     func execute(idx: Int) -> [ListType] {
-        self.levelRepository.getAll(where: NSPredicate(format: "unitIdx == %@", idx))
+        self.levelRepository.getAll(where: NSPredicate(format: "unitIdx == %d", idx))
     }
 }

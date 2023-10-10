@@ -20,7 +20,7 @@ class SelectLevelViewModel: BaseViewModel {
     }
     
     func onAppear() {
-        
+        self.getLevelList()
     }
 
     func getLevelList() {
@@ -29,6 +29,13 @@ class SelectLevelViewModel: BaseViewModel {
     
     func onClose() {
         self.dismiss()
+    }
+    
+    func onClickLevel(_ level: Level) {
+        if level.openTime == 0 {
+            return
+        }
+        print("click! \(level.idx)")
     }
 }
 

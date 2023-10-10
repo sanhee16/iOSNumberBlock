@@ -37,7 +37,7 @@ final class DefaultInitalizeDBUseCase: InitalizeDBUseCase {
         
         for i in 0..<5 {
             for j in 0..<100 {
-                try? self.levelRepository.insert(item: Level(idx: j, unitIdx: i))
+                try? self.levelRepository.insert(item: Level(idx: j, unitIdx: i, openTime: j == 0 ? Int(Date().timeIntervalSince1970) : 0))
             }
         }
         

@@ -9,6 +9,30 @@ import SwiftUI
 import Combine
 
 extension View {
+    public func padding(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> some View {
+        return self.padding(EdgeInsets(top: top, leading: leading, bottom: bottom, trailing: trailing))
+    }
+    public func paddingTop(_ value: CGFloat) -> some View {
+        return self.padding(EdgeInsets(top: value, leading: 0, bottom: 0, trailing: 0))
+    }
+    public func paddingLeading(_ value: CGFloat) -> some View {
+        return self.padding(EdgeInsets(top: 0, leading: value, bottom: 0, trailing: 0))
+    }
+    public func paddingTrailing(_ value: CGFloat) -> some View {
+        return self.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: value))
+    }
+    public func paddingBottom(_ value: CGFloat) -> some View {
+        return self.padding(EdgeInsets(top: 0, leading: 0, bottom: value, trailing: 0))
+    }
+    public func paddingHorizontal(_ value: CGFloat) -> some View {
+        return self.padding(EdgeInsets(top: 0, leading: value, bottom: 0, trailing: value))
+    }
+    public func paddingVertical(_ value: CGFloat) -> some View {
+        return self.padding(EdgeInsets(top: value, leading: 0, bottom: value, trailing: 0))
+    }
+    
+    
+    
     public func border(_ color: Color, lineWidth: CGFloat, cornerRadius: CGFloat) -> some View {
         return self
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))

@@ -32,6 +32,7 @@ struct SelectUnitView: View {
                             unitItem(geometry, unit: unit)
                         }
                     }
+                    .padding(top: 10, leading: 0, bottom: 20, trailing: 0)
                 }
                 
                 Spacer()
@@ -44,30 +45,29 @@ struct SelectUnitView: View {
             vm.onAppear()
         }
     }
-//
-//    private func levelItem(_ geometry: GeometryProxy, level: Unit) -> some View {
-//    private func unitItem(_ geometry: GeometryProxy, unit: Unit) -> some View {
-//        return HStack(alignment: .center, spacing: 6) {
-//            if unit.openTime == 0 {
-//                Image(systemName: "lock.fill")
-//                    .scaledToFit()
-//                    .frame(both: 14.0)
-//            }
-//
-//            Text("UNIT \(unit.idx + 1)")
-//                .font(.kr14r)
-//                .foregroundColor(.black)
-//        }
-//        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-//        .frame(width: geometry.size.width - 20, alignment: .center)
-//        .background(
-//            RoundedRectangle(cornerRadius: 8)
-//                .foregroundColor(unit.openTime == 0 ? .gray60 : .white)
-//        )
-//        .border(.gray90, lineWidth: 1.2, cornerRadius: 8)
-//        .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 10))
-//        .onTapGesture {
-//            vm.onClickUnit(unit)
-//        }
-//    }
+    
+    private func unitItem(_ geometry: GeometryProxy, unit: Unit) -> some View {
+        return HStack(alignment: .center, spacing: 6) {
+            if unit.openTime == 0 {
+                Image(systemName: "lock.fill")
+                    .scaledToFit()
+                    .frame(both: 14.0)
+            }
+            
+            Text("UNIT \(unit.idx + 1)")
+                .font(.kr14r)
+                .foregroundColor(.black)
+        }
+        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+        .frame(width: geometry.size.width - 20, alignment: .center)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(unit.openTime == 0 ? .gray60 : .white)
+        )
+        .border(.gray90, lineWidth: 1.2, cornerRadius: 8)
+        .padding(EdgeInsets(top: 0, leading: 10, bottom: 8, trailing: 10))
+        .onTapGesture {
+            vm.onClickUnit(unit)
+        }
+    }
 }
