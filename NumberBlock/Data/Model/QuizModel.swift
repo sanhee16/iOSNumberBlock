@@ -14,8 +14,9 @@ struct Quiz: Equatable, Hashable {
     var uuid: String = UUID().uuidString
     var idx: Int // idx, 순서
     var levelIdx: Int // Level Idx
+    var openTime: Int = 0  // epochTime
     var completeTime: Int = 0 // 문제 푼 날짜 epochTime
-    var score: Int
+    var score: Int = 0
     
     var block1: Block
     var block2: Block

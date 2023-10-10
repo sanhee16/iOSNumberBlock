@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct Block: Hashable {
     var max: Int

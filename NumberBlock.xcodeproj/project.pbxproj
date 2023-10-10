@@ -29,6 +29,8 @@
 		266099B52AD54C9600C0E64A /* InitalizeDBUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266099B42AD54C9600C0E64A /* InitalizeDBUseCase.swift */; };
 		266099B72AD555AD00C0E64A /* FetchListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266099B62AD555AD00C0E64A /* FetchListUseCase.swift */; };
 		266099B92AD55F7500C0E64A /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266099B82AD55F7500C0E64A /* Topbar.swift */; };
+		266099BC2AD569AB00C0E64A /* QuizStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266099BB2AD569AB00C0E64A /* QuizStorage.swift */; };
+		266099BE2AD569BF00C0E64A /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266099BD2AD569BF00C0E64A /* QuizRepository.swift */; };
 		2665527B2ACD3790004621C8 /* LevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665527A2ACD3790004621C8 /* LevelModel.swift */; };
 		2665527D2ACD3858004621C8 /* UnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665527C2ACD3858004621C8 /* UnitModel.swift */; };
 		2665527F2ACD386A004621C8 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2665527E2ACD386A004621C8 /* QuizModel.swift */; };
@@ -89,6 +91,8 @@
 		266099B42AD54C9600C0E64A /* InitalizeDBUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitalizeDBUseCase.swift; sourceTree = "<group>"; };
 		266099B62AD555AD00C0E64A /* FetchListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchListUseCase.swift; sourceTree = "<group>"; };
 		266099B82AD55F7500C0E64A /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
+		266099BB2AD569AB00C0E64A /* QuizStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizStorage.swift; sourceTree = "<group>"; };
+		266099BD2AD569BF00C0E64A /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
 		2665527A2ACD3790004621C8 /* LevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelModel.swift; sourceTree = "<group>"; };
 		2665527C2ACD3858004621C8 /* UnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitModel.swift; sourceTree = "<group>"; };
 		2665527E2ACD386A004621C8 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				26155ACF2AD3FC5300FEC8BF /* Repository.swift */,
 				26155AD72AD3FCD400FEC8BF /* UnitRepository.swift */,
 				26155AE72AD40D8F00FEC8BF /* LevelRepository.swift */,
+				266099BD2AD569BF00C0E64A /* QuizRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			children = (
 				26155ADB2AD3FD1B00FEC8BF /* UnitStorage.swift */,
 				26155AE52AD40D1900FEC8BF /* LevelStorage.swift */,
+				266099BB2AD569AB00C0E64A /* QuizStorage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				26900A1C2A2B28DD00653275 /* SProgress.swift in Sources */,
 				267019D42A2C54C6001C18B5 /* RemoteConfig.swift in Sources */,
 				269009FE2A2B248200653275 /* AppDelegate.swift in Sources */,
+				266099BC2AD569AB00C0E64A /* QuizStorage.swift in Sources */,
 				26155AE02AD406A000FEC8BF /* SelectUnitViewModel.swift in Sources */,
 				26155AD82AD3FCD400FEC8BF /* UnitRepository.swift in Sources */,
 				269009FB2A2B238300653275 /* Coordinator.swift in Sources */,
@@ -603,6 +610,7 @@
 				26900A082A2B257500653275 /* NetworkMonitor.swift in Sources */,
 				26155ADC2AD3FD1B00FEC8BF /* UnitStorage.swift in Sources */,
 				26155AE22AD40C9D00FEC8BF /* SelectLevelView.swift in Sources */,
+				266099BE2AD569BF00C0E64A /* QuizRepository.swift in Sources */,
 				2665527D2ACD3858004621C8 /* UnitModel.swift in Sources */,
 				26155AE62AD40D1900FEC8BF /* LevelStorage.swift in Sources */,
 				26ED56142A2C1A64006A8810 /* NumberBlock++Bundle.swift in Sources */,
