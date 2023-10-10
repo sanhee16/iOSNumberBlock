@@ -46,12 +46,17 @@ class AppCoordinator: Coordinator, Terminatable {
     
     //MARK: Start
     func startSplash() {
-        let vc = SplashView.vc(self, unitRepository: appDIContainer.unitRepository)
+        let vc = SplashView.vc(self, initalizeDBUseCase: appDIContainer.initalizeDBUseCase)
         self.present(vc, animated: true)
     }
     
     func presentSelectUnit() {
-        let vc = SelectUnitView.vc(self, unitRepository: appDIContainer.unitRepository)
+        let vc = SelectUnitView.vc(self, fetchUnitListUseCase: appDIContainer.fetchUnitListUseCase)
+        self.present(vc, animated: true)
+    }
+    
+    func presentSelectLevel(_ unit: Unit) {
+        let vc = SelectLevelView.vc(self, unit: unit, fetchLevelListUseCase: appDIContainer.fetchLevelListUseCase)
         self.present(vc, animated: true)
     }
     

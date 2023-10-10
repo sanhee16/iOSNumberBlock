@@ -15,10 +15,10 @@ import AppTrackingTransparency
 
 class SplashViewModel: BaseViewModel {
     private var timerRepeat: Timer?
-    private let unitRepository: UnitRepository
+    private let initalizeDBUseCase: InitalizeDBUseCase
     
-    init(_ coordinator: AppCoordinator, unitRepository: UnitRepository) {
-        self.unitRepository = unitRepository
+    init(_ coordinator: AppCoordinator, initalizeDBUseCase: InitalizeDBUseCase) {
+        self.initalizeDBUseCase = initalizeDBUseCase
         super.init(coordinator)
     }
     
@@ -83,6 +83,8 @@ class SplashViewModel: BaseViewModel {
     
     private func initDB() {
         // unit
-        self.unitRepository.initRepository()
+        self.initalizeDBUseCase.execute {
+            print("Done!")
+        }
     }
 }

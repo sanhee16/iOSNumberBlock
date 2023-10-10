@@ -14,6 +14,6 @@ struct Level: Equatable, Hashable, Codable {
     var uuid: String = UUID().uuidString
     var idx: Int // idx, 순서
     var unitIdx: Int // Unit Idx
-    var complete: Int? // epochTime
-    var score: Int // Last Score
+    var completeTime: Int = 0  // epochTime
+    var score: Int = 0 // Last Score
 }

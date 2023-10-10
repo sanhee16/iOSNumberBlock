@@ -1,5 +1,5 @@
 //
-//  UnitRepository.swift
+//  LevelRepository.swift
 //  NumberBlock
 //
 //  Created by sandy on 2023/10/09.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-class UnitRepository: AnyRepository<Unit> {
+class LevelRepository: AnyRepository<Level> {
     
 }

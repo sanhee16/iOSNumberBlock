@@ -10,9 +10,15 @@ import UIKit
 
 final class AppDIContainer {
     static let shared: AppDIContainer = AppDIContainer()
-    let unitRepository: UnitRepository
+    let initalizeDBUseCase: InitalizeDBUseCase
+    let fetchUnitListUseCase: FetchUnitListUseCase
+    let fetchLevelListUseCase: FetchLevelListUseCase
+    let unitRepository: UnitRepository = UnitRepository()
+    let levelRepository: LevelRepository = LevelRepository()
     
     private init() {
-        self.unitRepository = UnitRepository()
+        self.initalizeDBUseCase = DefaultInitalizeDBUseCase(unitRepository: self.unitRepository, levelRepository: self.levelRepository)
+        self.fetchUnitListUseCase = FetchUnitListUseCase(unitRepository: self.unitRepository)
+        self.fetchLevelListUseCase = FetchLevelListUseCase(levelRepository: self.levelRepository)
     }
 }

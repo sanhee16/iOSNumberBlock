@@ -9,11 +9,11 @@ import Foundation
 import Combine
 
 class SelectUnitViewModel: BaseViewModel {
-    private let unitRepository: UnitRepository
+    private let fetchUnitListUseCase: FetchUnitListUseCase
     @Published var list: [Unit] = []
     
-    init(_ coordinator: AppCoordinator, unitRepository: UnitRepository) {
-        self.unitRepository = unitRepository
+    init(_ coordinator: AppCoordinator, fetchUnitListUseCase: FetchUnitListUseCase) {
+        self.fetchUnitListUseCase = fetchUnitListUseCase
         super.init(coordinator)
     }
     
@@ -22,7 +22,7 @@ class SelectUnitViewModel: BaseViewModel {
     }
 
     func getUnitList() {
-        self.list = self.unitRepository.getAll()
+        self.list = self.fetchUnitListUseCase.execute()
     }
     
     func onClickUnit(_ unit: Unit) {
@@ -30,6 +30,7 @@ class SelectUnitViewModel: BaseViewModel {
         if (unit.openTime > 0) || (list[idx - 1].completeTime > 0) {
             // Present Select Level
             print("present unit \(unit.idx + 1)")
+            self.coordinator?.presentSelectLevel(unit)
             return
         }
         return
