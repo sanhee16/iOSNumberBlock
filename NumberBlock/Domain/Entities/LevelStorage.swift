@@ -14,6 +14,7 @@ extension Level: Entity {
         realm.uuid = uuid
         realm.idx = idx
         realm.unitIdx = unitIdx
+        realm.title = title
         realm.openTime = openTime
         realm.completeTime = completeTime
         realm.score = score
@@ -26,16 +27,17 @@ extension Level: Entity {
 }
 
 class LevelStorage: Object, Storable {
-    @Persisted(primaryKey: true) var uuid: String = ""
+    @Persisted(primaryKey: true) var uuid: String
     @Persisted var idx: Int
     @Persisted var unitIdx: Int
+    @Persisted var title: String
     @Persisted var completeTime: Int
     @Persisted var openTime: Int
     @Persisted var score: Int
     
     var model: Level {
         get {
-            return Level(idx: idx, unitIdx: unitIdx, openTime: openTime, completeTime: completeTime, score: score)
+            return Level(uuid: uuid, idx: idx, unitIdx: unitIdx, title: title, openTime: openTime, completeTime: completeTime, score: score)
         }
     }
 }

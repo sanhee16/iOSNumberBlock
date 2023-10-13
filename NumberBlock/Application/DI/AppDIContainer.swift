@@ -18,6 +18,9 @@ final class AppDIContainer {
     let levelRepository: LevelRepository = LevelRepository()
     let quizRepository: QuizRepository = QuizRepository()
     
+    let fireStorageService: FireStorageService = FireStorageService()
+    
+    let downloadDBUseCase: DownloadDBUseCase
     private init() {
         self.initalizeDBUseCase = DefaultInitalizeDBUseCase(
             unitRepository: self.unitRepository,
@@ -27,5 +30,7 @@ final class AppDIContainer {
         self.fetchUnitListUseCase = FetchUnitListUseCase(unitRepository: self.unitRepository)
         self.fetchLevelListUseCase = FetchLevelListUseCase(levelRepository: self.levelRepository)
         self.fetchQuizListUseCase = FetchQuizListUseCase(quizRepository: self.quizRepository)
+        
+        self.downloadDBUseCase = DefaultDownloadDBUseCase(fireStorageService: self.fireStorageService)
     }
 }

@@ -11,7 +11,7 @@ struct Quiz: Equatable, Hashable {
     static func == (lhs: Quiz, rhs: Quiz) -> Bool {
         return lhs.uuid == rhs.uuid
     }
-    var uuid: String = UUID().uuidString
+    var uuid: String
     var idx: Int // idx, 순서
     var levelIdx: Int // Level Idx
     var isSolved: Bool = false

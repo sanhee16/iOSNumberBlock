@@ -46,7 +46,7 @@ class AppCoordinator: Coordinator, Terminatable {
     
     //MARK: Start
     func startSplash() {
-        let vc = SplashView.vc(self, initalizeDBUseCase: appDIContainer.initalizeDBUseCase)
+        let vc = SplashView.vc(self, initalizeDBUseCase: appDIContainer.initalizeDBUseCase, downloadDBUseCase: appDIContainer.downloadDBUseCase)
         self.present(vc, animated: true)
     }
     

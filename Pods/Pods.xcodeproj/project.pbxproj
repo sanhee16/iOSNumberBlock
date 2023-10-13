@@ -611,7 +611,7 @@
 		C5DC9B713D8F71F3D829D990E05E0275 /* PreCompLayerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreCompLayerModel.swift; path = Sources/Private/Model/Layers/PreCompLayerModel.swift; sourceTree = "<group>"; };
 		C5F228425B0D9BAE2428D6358C2573C6 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		C69C993F30B528F9496696740C19FA3E /* StringEncoding+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "StringEncoding+Alamofire.swift"; path = "Source/StringEncoding+Alamofire.swift"; sourceTree = "<group>"; };
-		C6E31EF5E1018116805B9E444E077DAA /* Pods-NumberBlock */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-NumberBlock"; path = Pods_NumberBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6E31EF5E1018116805B9E444E077DAA /* Pods_NumberBlock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberBlock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74C4285635766F3FF54F573BB40E841 /* FittedSheets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FittedSheets.debug.xcconfig; sourceTree = "<group>"; };
 		C86A4B7B7C6407D67B2FD506F3909856 /* DefaultAnimationCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultAnimationCache.swift; path = Sources/Public/AnimationCache/DefaultAnimationCache.swift; sourceTree = "<group>"; };
 		C9E6A9367573D73C587A3CD39F8B6F71 /* AnyValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyValueProvider.swift; path = Sources/Public/DynamicProperties/AnyValueProvider.swift; sourceTree = "<group>"; };
@@ -1180,7 +1180,7 @@
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */,
 				21AAE79511133937606E376EE52BED4F /* FittedSheets */,
 				51BA97E8B5085EFFB47BC9C0B785CEA7 /* lottie-ios */,
-				C6E31EF5E1018116805B9E444E077DAA /* Pods-NumberBlock */,
+				C6E31EF5E1018116805B9E444E077DAA /* Pods_NumberBlock.framework */,
 				EE18735978C1FD3A42D4D3D0356F3CA6 /* SwiftUIPager */,
 			);
 			name = Products;
@@ -1287,7 +1287,7 @@
 			);
 			name = "Pods-NumberBlock";
 			productName = Pods_NumberBlock;
-			productReference = C6E31EF5E1018116805B9E444E077DAA /* Pods-NumberBlock */;
+			productReference = C6E31EF5E1018116805B9E444E077DAA /* Pods_NumberBlock.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B71C614CBF9B1B690FE941C4DF44D040 /* FittedSheets */ = {

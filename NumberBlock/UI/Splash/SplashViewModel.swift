@@ -16,20 +16,24 @@ import AppTrackingTransparency
 class SplashViewModel: BaseViewModel {
     private var timerRepeat: Timer?
     private let initalizeDBUseCase: InitalizeDBUseCase
-    
-    init(_ coordinator: AppCoordinator, initalizeDBUseCase: InitalizeDBUseCase) {
+    private let downloadDBUseCase: DownloadDBUseCase
+    init(_ coordinator: AppCoordinator, initalizeDBUseCase: InitalizeDBUseCase, downloadDBUseCase: DownloadDBUseCase) {
         self.initalizeDBUseCase = initalizeDBUseCase
+        self.downloadDBUseCase = downloadDBUseCase
         super.init(coordinator)
     }
     
     func onAppear() {
+        print("onAppear")
         checkNetworkConnect() {[weak self] in
             guard let self = self else { return }
             if !Defaults.launchBefore {
+                print("launchBefore == false")
                 Defaults.launchBefore = true
                 self.firstLaunchTask()
                 self.startRepeatTimer()
             } else {
+                print("launchBefore == true")
                 self.onStartSplashTimer()
             }
         }
@@ -47,7 +51,10 @@ class SplashViewModel: BaseViewModel {
     }
     
     private func firstLaunchTask() {
-        initDB()
+        downloadDBUseCase.execute { [weak self] in
+            print("downloadDBUseCase!")
+            self?.initDB()
+        }
     }
     
     

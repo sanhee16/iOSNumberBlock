@@ -10,8 +10,8 @@ import SwiftUI
 
 struct SplashView: View {
     typealias VM = SplashViewModel
-    public static func vc(_ coordinator: AppCoordinator, initalizeDBUseCase: InitalizeDBUseCase, completion: (()-> Void)? = nil) -> UIViewController {
-        let vm = VM.init(coordinator, initalizeDBUseCase: initalizeDBUseCase)
+    public static func vc(_ coordinator: AppCoordinator, initalizeDBUseCase: InitalizeDBUseCase, downloadDBUseCase: DownloadDBUseCase, completion: (()-> Void)? = nil) -> UIViewController {
+        let vm = VM.init(coordinator, initalizeDBUseCase: initalizeDBUseCase, downloadDBUseCase: downloadDBUseCase)
         let view = Self.init(vm: vm)
         let vc = BaseViewController.init(view, completion: completion)
         return vc

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+
 
 protocol InitalizeDBUseCase {
     func execute(
@@ -18,6 +20,7 @@ final class DefaultInitalizeDBUseCase: InitalizeDBUseCase {
     private let unitRepository: UnitRepository
     private let levelRepository: LevelRepository
     private let quizRepository: QuizRepository
+    private var subscription = Set<AnyCancellable>()
     
     init(
         unitRepository: UnitRepository,
@@ -33,38 +36,77 @@ final class DefaultInitalizeDBUseCase: InitalizeDBUseCase {
         //        requestValue: InitalizeDBUseCaseRequestValue,
         completion: @escaping () -> ()
     ) {
-        initUnit()
-        initLevel()
-        initQuiz()
-        
-        completion()
+        self.getLocalFiles(completion)
     }
     
-    private func initUnit() {
-        for i in 0..<5 {
-            try? self.unitRepository.insert(item: Unit(idx: i, openTime: i == 0 ? Int(Date().timeIntervalSince1970) : 0))
+    private func getLocalFiles(_ completion: @escaping () -> ()) {
+        // 파일매니저 인스턴스 생성
+        let fileManager = FileManager.default
+        // 사용자의 문서 경로
+        let documentPath: URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        // 만든 파일 불러와서 읽기.
+        
+        
+        Publishers.Zip3(
+            loadFiles(documentPath.appendingPathComponent("unit.csv")),
+            loadFiles(documentPath.appendingPathComponent("level.csv")),
+            loadFiles(documentPath.appendingPathComponent("quiz.csv"))
+            )
+        .run(in: &self.subscription) {[weak self] (unitList, levelList, quizList) in
+            guard let self = self else { return }
+            for item in unitList {
+                if item.count < 4 { continue }
+                let idx = Int(item[0]) ?? 0
+                let uuid = item[1]
+                let title = item[2]
+                let subTitle = item[3]
+                try? self.unitRepository.insert(item: Unit(uuid: uuid, idx: idx, title: title, subTitle: subTitle, openTime: Int(Date().timeIntervalSince1970)))
+            }
+            for item in levelList {
+                if item.count < 4 { continue }
+                let idx = Int(item[0]) ?? 0
+                let uuid = item[1]
+                let unitIdx = Int(item[2]) ?? 0
+                let title = item[3]
+                try? self.levelRepository.insert(item: Level(uuid: uuid, idx: idx, unitIdx: unitIdx, title: title, openTime: Int(Date().timeIntervalSince1970)))
+            }
+            for item in quizList {
+                if item.count < 5 { continue }
+                let idx = Int(item[0]) ?? 0
+                let uuid = item[1]
+                let levelIdx = Int(item[2]) ?? 0
+                let block1Num = Int(item[3]) ?? 0
+                let block2Num = Int(item[4]) ?? 0
+                try? self.quizRepository.insert(item: Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, block1: Block(num: block1Num), block2: Block(num: block2Num)))
+            }
+        } err: { err in
+            print(err)
+        } complete: {
+            completion()
         }
+
     }
-    private func initLevel() {
-        for i in 0..<5 {
-            for j in 0..<100 {
-                try? self.levelRepository.insert(item: Level(idx: j, unitIdx: i, openTime: j == 0 ? Int(Date().timeIntervalSince1970) : 0))
+    
+    private func loadFiles(_ url: URL) -> Future<[[String]], Error> {
+        return Future<[[String]], Error> {[weak self] promise in
+            guard let self = self else { return }
+            do {
+                let dataFromPath: Data = try Data(contentsOf: url) // URL을 불러와서 Data타입으로 초기화
+                let dataEncoded: String? = String(data: dataFromPath, encoding: .utf8) // Data to String
+                if let dataArr = dataEncoded?.components(separatedBy: "\n").map({$0.components(separatedBy: ",")}) {
+                    var result = dataArr
+                    result.removeFirst()
+                    promise(.success(result))
+                }
+            } catch let e {
+                print("FAILED!!")
+                print(e.localizedDescription)
+                promise(.failure(e))
             }
         }
-        
     }
-    private func initQuiz() {
-        for i in 0..<20 { // level
-            for j in 0..<10 { // quiz
-                let block1Num: Int = Int.random(in: 0..<6)
-                let block2Num: Int = Int.random(in: 0..<6)
-                try? self.quizRepository.insert(item: Quiz(
-                    idx: j, levelIdx: i,
-                    block1: Block(num: block1Num), block2: Block(num: block2Num))
-                )
-            }
-        }
-        
+    deinit {
+        subscription.removeAll()
     }
 }
 

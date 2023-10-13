@@ -33,7 +33,7 @@ extension Quiz: Entity {
 }
 
 class QuizStorage: Object, Storable {
-    @Persisted(primaryKey: true) var uuid: String = ""
+    @Persisted(primaryKey: true) var uuid: String
     @Persisted var idx: Int
     @Persisted var levelIdx: Int
     @Persisted var completeTime: Int = 0
@@ -43,7 +43,7 @@ class QuizStorage: Object, Storable {
     
     var model: Quiz {
         get {
-            return Quiz(idx: idx, levelIdx: levelIdx, isSolved: false, completeTime: completeTime, block1: Block(num: block1Num), block2: Block(num: block2Num))
+            return Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, isSolved: false, completeTime: completeTime, block1: Block(num: block1Num), block2: Block(num: block2Num))
         }
     }
 }

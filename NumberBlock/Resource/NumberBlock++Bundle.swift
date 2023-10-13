@@ -8,47 +8,18 @@
 import Foundation
 
 // Use Plist for get API_KEY
-// https://nareunhagae.tistory.com/44
+// https://nareunhagae.tistory.com/44s
 extension Bundle {
-    var googleApiKey: String {
+    var fireStorageUrl: String {
         get {
             // 1
-            guard let filePath = Bundle.main.path(forResource: "ApiInfo", ofType: "plist") else {
-                fatalError("Couldn't find file 'ApiInfo.plist'.")
+            guard let filePath = Bundle.main.path(forResource: "AppInfo", ofType: "plist") else {
+                fatalError("Couldn't find file 'AppInfo.plist'.")
             }
             // 2
             let plist = NSDictionary(contentsOfFile: filePath)
-            guard let value = plist?.object(forKey: "GOOGLE_API_KEY") as? String else {
-                fatalError("Couldn't find key 'GOOGLE_API_KEY' in 'ApiInfo.plist'.")
-            }
-            return value
-        }
-    }
-    var geocodingApiKey: String {
-        get {
-            // 1
-            guard let filePath = Bundle.main.path(forResource: "ApiInfo", ofType: "plist") else {
-                fatalError("Couldn't find file 'ApiInfo.plist'.")
-            }
-            // 2
-            let plist = NSDictionary(contentsOfFile: filePath)
-            guard let value = plist?.object(forKey: "GEOCODING_API_KEY") as? String else {
-                fatalError("Couldn't find key 'GEOCODING_API_KEY' in 'ApiInfo.plist'.")
-            }
-            return value
-        }
-    }
-    
-    var gadBannerId: String {
-        get {
-            // 1
-            guard let filePath = Bundle.main.path(forResource: "ApiInfo", ofType: "plist") else {
-                fatalError("Couldn't find file 'ApiInfo.plist'.")
-            }
-            // 2
-            let plist = NSDictionary(contentsOfFile: filePath)
-            guard let value = plist?.object(forKey: "GADBannerID") as? String else {
-                fatalError("Couldn't find key 'GADBannerID' in 'ApiInfo.plist'.")
+            guard let value = plist?.object(forKey: "FireStorageUrl") as? String else {
+                fatalError("Couldn't find key 'FireStorageUrl' in 'AppInfo.plist'.")
             }
             return value
         }
