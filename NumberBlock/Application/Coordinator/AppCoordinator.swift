@@ -50,6 +50,7 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
+    //MARK: Present
     func presentSelectUnit() {
         let vc = SelectUnitView.vc(self, fetchUnitListUseCase: appDIContainer.fetchUnitListUseCase)
         self.present(vc, animated: true)
@@ -60,10 +61,14 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
-    //MARK: Present
     func presentMain() {
         let vc = MainView.vc(self)
         self.present(vc, animated: true)
+    }
+    
+    func presentQuizView(level: Level) {
+        let vc = QuizView.vc(self, level: level, fetchQuizListUseCase: appDIContainer.fetchQuizListUseCase)
+        self.present(vc, animated: false)
     }
     
     func presentAlertView(_ type: AlertType, title: String?, description: String?, callback: ((Bool) -> ())?) {
@@ -71,8 +76,4 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: false)
     }
     
-    func presentQuizView() {
-        let vc = QuizView.vc(self)
-        self.present(vc, animated: false)
-    }
 }

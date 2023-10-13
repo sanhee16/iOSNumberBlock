@@ -13,8 +13,8 @@ import SwiftUIPager
 struct QuizView: View {
     typealias VM = QuizViewModel
     
-    public static func vc(_ coordinator: AppCoordinator, completion: (()-> Void)? = nil) -> UIViewController {
-        let vm = VM.init(coordinator)
+    public static func vc(_ coordinator: AppCoordinator, level: Level, fetchQuizListUseCase: FetchQuizListUseCase, completion: (()-> Void)? = nil) -> UIViewController {
+        let vm = VM.init(coordinator, level: level, fetchQuizListUseCase: fetchQuizListUseCase)
         let view = Self.init(vm: vm)
         
         let vc = BaseViewController.init(view, completion: completion) {
@@ -34,9 +34,9 @@ struct QuizView: View {
             VStack(alignment: .center, spacing: 0) {
                 Text("Quiz1")
                     .font(.kr26b)
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
-                Pager(page: $vm.page.wrappedValue, data: $vm.quizItems.wrappedValue.indices, id: \.self) { idx in
-                    let quizItem = $vm.quizItems.wrappedValue[idx]
+                    .padding(top: 10, leading: 0, bottom: 10, trailing: 0)
+                Pager(page: $vm.page.wrappedValue, data: $vm.quizList.wrappedValue.indices, id: \.self) { idx in
+                    let quizItem = $vm.quizList.wrappedValue[idx]
                     QuizItemView(vm: vm, item: quizItem)
                 }
                 .allowsDragging(false)
@@ -90,9 +90,9 @@ struct QuizItemView: View {
     private let blockSize: CGFloat = UIScreen.main.bounds.height / 19
     
     @ObservedObject var vm: VM
-    var item: QuizData
+    var item: Quiz
     
-    init(vm: VM, item: QuizData) {
+    init(vm: VM, item: Quiz) {
         self.vm = vm
         self.item = item
     }
@@ -103,8 +103,8 @@ struct QuizItemView: View {
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
                     HStack(alignment: .center, spacing: 20) {
-                        drawBlockBox(item.block1, color: .green.opacity(0.4))
-                        drawBlockBox(item.block2, color: .red.opacity(0.4))
+                        drawBlockBox(item.block1)
+                        drawBlockBox(item.block2)
                     }
                     Spacer()
                     drawAnswerBlockBox()
@@ -127,12 +127,12 @@ struct QuizItemView: View {
     }
     
     
-    private func drawBlockBox(_ cnt: Int, color: Color) -> some View {
-        return LazyVGrid(columns: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 2), spacing: 0.5) {
+    private func drawBlockBox(_ block: Block) -> some View {
+        return LazyHGrid(rows: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 5), spacing: 0.5) {
             ForEach(0..<10, id: \.self) { i in
                 RoundedRectangle(cornerRadius: 10)
                     .frame(both: blockSize)
-                    .foregroundColor(i < cnt ? color : .unSelected)
+                    .foregroundColor(i < block.num ? QuizAnswer(rawValue: block.num)?.selectedColor : .unSelected)
             }
         }
         .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
@@ -146,28 +146,26 @@ struct QuizItemView: View {
     
     private func drawAnswerBlockBox() -> some View {
         return VStack(alignment: .center, spacing: 8) {
-            LazyVGrid(columns: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 2), spacing: 0.5) {
-                ForEach(0..<10, id: \.self) { idx in
-                    let item = $vm.quizItems.wrappedValue[$vm.pageIdx.wrappedValue]
+            LazyHGrid(rows: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 5), spacing: 0.5) {
+                ForEach(0..<$vm.quizList.wrappedValue.count, id: \.self) { idx in
                     ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 10)
-                        if item.answerBlock[idx] {
-                            Text("10")
-                                .font(.kr16b)
-                                .foregroundColor(.black)
-                                .zIndex(1)
-                        }
+                        Text("1")
+                            .font(.kr16b)
+                            .foregroundColor(.black)
+                            .zIndex(1)
                     }
                     .frame(both: blockSize)
                     .foregroundColor(
-                        item.answerBlock[idx] ? vm.setSelectedColor(idx) : .unSelected
+                        idx < $vm.userAnswer.wrappedValue ? QuizAnswer(rawValue: $vm.userAnswer.wrappedValue)?.selectedColor : .unSelected
                     )
+                    .id(idx)
                     .onTapGesture {
                         vm.onClickAnswerBlock(idx)
                     }
                 }
             }
-            Text("\($vm.quizItems.wrappedValue[$vm.pageIdx.wrappedValue].answerBlock.filter { $0 == true }.count)")
+            Text("\($vm.userAnswer.wrappedValue)")
                 .font(.kr20b)
             
         }
@@ -181,8 +179,8 @@ struct QuizItemView: View {
 }
 
 
-struct QuizView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizView(vm: QuizViewModel())
-    }
-}
+//struct QuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuizView(vm: QuizViewModel())
+//    }
+//}

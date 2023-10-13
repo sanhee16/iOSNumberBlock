@@ -58,8 +58,8 @@ final class DefaultInitalizeDBUseCase: InitalizeDBUseCase {
             for j in 0..<10 { // quiz
                 let block1Num: Int = Int.random(in: 0..<6)
                 let block2Num: Int = Int.random(in: 0..<6)
-                try? self.quizRepository.insert(item: Quiz (
-                    idx: j, levelIdx: i, openTime: j == 0 ? Int(Date().timeIntervalSince1970) : 0,
+                try? self.quizRepository.insert(item: Quiz(
+                    idx: j, levelIdx: i,
                     block1: Block(max: 10, num: block1Num), block2: Block(max: 10, num: block2Num), answer: Block(max: 10, num: block1Num + block2Num))
                 )
             }

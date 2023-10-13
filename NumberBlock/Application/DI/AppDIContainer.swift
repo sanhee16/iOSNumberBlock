@@ -13,6 +13,7 @@ final class AppDIContainer {
     let initalizeDBUseCase: InitalizeDBUseCase
     let fetchUnitListUseCase: FetchUnitListUseCase
     let fetchLevelListUseCase: FetchLevelListUseCase
+    let fetchQuizListUseCase: FetchQuizListUseCase
     let unitRepository: UnitRepository = UnitRepository()
     let levelRepository: LevelRepository = LevelRepository()
     let quizRepository: QuizRepository = QuizRepository()
@@ -25,5 +26,6 @@ final class AppDIContainer {
         )
         self.fetchUnitListUseCase = FetchUnitListUseCase(unitRepository: self.unitRepository)
         self.fetchLevelListUseCase = FetchLevelListUseCase(levelRepository: self.levelRepository)
+        self.fetchQuizListUseCase = FetchQuizListUseCase(quizRepository: self.quizRepository)
     }
 }

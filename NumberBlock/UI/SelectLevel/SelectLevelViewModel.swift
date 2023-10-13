@@ -36,6 +36,7 @@ class SelectLevelViewModel: BaseViewModel {
             return
         }
         print("click! \(level.idx)")
+        self.coordinator?.presentQuizView(level: level)
     }
 }
 

@@ -23,8 +23,7 @@ class MainViewModel: BaseViewModel {
     }
     
     func onAppear() {
-        checkNetworkConnect()
-        self.coordinator?.presentQuizView()
+        
     }
     
     func viewDidLoad() {

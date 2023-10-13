@@ -48,3 +48,19 @@ final class FetchLevelListUseCase: FetchListUseCase {
         self.levelRepository.getAll(where: NSPredicate(format: "unitIdx == %d", idx))
     }
 }
+
+
+final class FetchQuizListUseCase: FetchListUseCase {
+    typealias ListType = Quiz
+    private let quizRepository: QuizRepository
+
+    init(
+        quizRepository: QuizRepository
+    ) {
+        self.quizRepository = quizRepository
+    }
+
+    func execute(idx: Int) -> [ListType] {
+        self.quizRepository.getAll(where: NSPredicate(format: "levelIdx == %d", idx))
+    }
+}

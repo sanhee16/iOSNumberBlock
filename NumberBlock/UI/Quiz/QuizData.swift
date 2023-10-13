@@ -6,20 +6,47 @@
 //
 
 import Foundation
+import SwiftUI
 
-
-struct QuizData {
-    var max: Int
-    var block1: Int
-    var block2: Int
-    var isSolved: Bool
-    var answerBlock: [Bool] = []
+enum QuizAnswer: Int {
+    case no1 = 1
+    case no2 = 2
+    case no3 = 3
+    case no4 = 4
+    case no5 = 5
+    case no6 = 6
+    case no7 = 7
+    case no8 = 8
+    case no9 = 9
+    case no10 = 10
     
-    init(max: Int, block1: Int, block2: Int, isSolved: Bool, answerBlock: [Bool] = []) {
-        self.max = max
-        self.block1 = block1
-        self.block2 = block2
-        self.isSolved = isSolved
-        self.answerBlock = Array(repeating: false, count: max)
+    var selectedColor: Color {
+        switch self {
+        case .no1: return .no1
+        case .no2: return .no2
+        case .no3: return .no3
+        case .no4: return .no4
+        case .no5: return .no5
+        case .no6: return .no6
+        case .no7: return .no7
+        case .no8: return .no8
+        case .no9: return .no9
+        case .no10: return .no10
+        }
+    }
+}
+
+
+enum QuizScoreStatus {
+    case correct
+    case incorrect
+    case none
+    
+    var imageName: String? {
+        switch self {
+        case .correct: return "correct"
+        case .incorrect: return "incorrect"
+        case .none: return nil
+        }
     }
 }
