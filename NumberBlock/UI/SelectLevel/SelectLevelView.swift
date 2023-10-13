@@ -72,7 +72,7 @@ struct LevelItem: View {
                     .frame(both: 14.0)
             }
             
-            Text("\(level.idx + 1)")
+            Text(level.title)
                 .font(.kr14r)
                 .foregroundColor(.black)
         }

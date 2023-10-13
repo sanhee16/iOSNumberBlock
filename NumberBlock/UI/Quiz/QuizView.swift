@@ -32,9 +32,9 @@ struct QuizView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Text("Quiz1")
-                    .font(.kr26b)
-                    .padding(top: 10, leading: 0, bottom: 10, trailing: 0)
+                Topbar("Quiz\(vm.level.title)", type: .back, textColor: .black) {
+                    vm.onClose()
+                }
                 Pager(page: $vm.page.wrappedValue, data: $vm.quizList.wrappedValue.indices, id: \.self) { idx in
                     let quizItem = $vm.quizList.wrappedValue[idx]
                     QuizItemView(vm: vm, item: quizItem)

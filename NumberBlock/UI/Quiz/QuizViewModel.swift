@@ -34,6 +34,10 @@ class QuizViewModel: BaseViewModel {
         updateMoveButton()
     }
     
+    func onClose() {
+        self.dismiss()
+    }
+    
     func fetchList() {
         self.quizList = self.fetchQuizListUseCase.execute(idx: level.idx)
     }

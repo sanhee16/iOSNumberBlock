@@ -53,12 +53,17 @@ struct SelectUnitView: View {
                     .scaledToFit()
                     .frame(both: 14.0)
             }
-            
-            Text("UNIT \(unit.idx + 1)")
-                .font(.kr14r)
-                .foregroundColor(.black)
+            VStack(alignment: .center, spacing: 4) {
+                Text(unit.title)
+                    .font(.kr18r)
+                    .foregroundColor(.black)
+                Text(unit.subTitle)
+                    .font(.kr14r)
+                    .foregroundColor(.gray60)
+                
+            }
         }
-        .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
         .frame(width: geometry.size.width - 20, alignment: .center)
         .background(
             RoundedRectangle(cornerRadius: 8)
