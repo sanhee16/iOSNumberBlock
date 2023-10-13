@@ -46,7 +46,6 @@ final class DefaultInitalizeDBUseCase: InitalizeDBUseCase {
         let documentPath: URL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         // 만든 파일 불러와서 읽기.
         
-        
         Publishers.Zip3(
             loadFiles(documentPath.appendingPathComponent("unit.csv")),
             loadFiles(documentPath.appendingPathComponent("level.csv")),

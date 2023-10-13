@@ -55,5 +55,9 @@ class FireRemoteConfigService {
 }
 
 extension FireRemoteConfigService {
-    
+    func getDBVersion(_ completion: @escaping (Int) -> ()) {
+        self.getRemoteIntValue("DBVersion") { value in
+            completion(Int(truncating: value))
+        }
+    }
 }
