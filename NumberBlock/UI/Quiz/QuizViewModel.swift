@@ -59,7 +59,7 @@ class QuizViewModel: BaseViewModel {
         if currentQuiz.isSolved {
             self.page.update(.move(increment: 1))
         } else {
-            if currentQuiz.answer.num == self.userAnswer {
+            if currentQuiz.answer == self.userAnswer {
                 self.quizList[self.pageIdx].isSolved = true
                 self.updateStatus(.correct)
                 self.page.update(.move(increment: 1))
@@ -80,7 +80,7 @@ class QuizViewModel: BaseViewModel {
     
     func isCorrectAnswer() -> Bool {
         let item = self.quizList[self.pageIdx]
-        return userAnswer == item.answer.num
+        return userAnswer == item.answer
     }
     
     func onClickAnswerBlock(_ idx: Int) {

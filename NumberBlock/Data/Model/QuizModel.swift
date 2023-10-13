@@ -20,5 +20,4 @@ struct Quiz: Equatable, Hashable {
     
     var block1: Block
     var block2: Block
-    var answer: Block
 }

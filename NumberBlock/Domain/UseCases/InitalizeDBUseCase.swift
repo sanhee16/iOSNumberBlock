@@ -60,7 +60,7 @@ final class DefaultInitalizeDBUseCase: InitalizeDBUseCase {
                 let block2Num: Int = Int.random(in: 0..<6)
                 try? self.quizRepository.insert(item: Quiz(
                     idx: j, levelIdx: i,
-                    block1: Block(max: 10, num: block1Num), block2: Block(max: 10, num: block2Num), answer: Block(max: 10, num: block1Num + block2Num))
+                    block1: Block(num: block1Num), block2: Block(num: block2Num))
                 )
             }
         }
