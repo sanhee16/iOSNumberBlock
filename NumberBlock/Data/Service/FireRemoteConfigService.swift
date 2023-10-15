@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseRemoteConfig
 
-
 class FireRemoteConfigService {
     let remoteConfig: RemoteConfig
     

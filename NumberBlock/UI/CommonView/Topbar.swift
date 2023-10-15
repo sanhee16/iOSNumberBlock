@@ -15,6 +15,7 @@ enum TopbarType: String {
 }
 
 struct Topbar: View {
+    static let PADDING: CGFloat = 14.0
     var title: String
     var type: TopbarType
     var textColor: Color
@@ -35,7 +36,7 @@ struct Topbar: View {
                         .resizable()
                         .scaledToFit()
                         .frame(both: 16)
-                        .padding(.leading, 10)
+                        .padding(.leading, Self.PADDING)
                         .onTapGesture {
                             callback?()
                         }

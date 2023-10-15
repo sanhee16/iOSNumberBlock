@@ -44,7 +44,7 @@ struct QuizView: View {
                                 vm.onClickHint()
                             }
                     }
-                    .paddingHorizontal(10)
+                    .paddingHorizontal(Topbar.PADDING)
                 }
                 
                 Pager(page: $vm.page.wrappedValue, data: $vm.quizList.wrappedValue.indices, id: \.self) { idx in

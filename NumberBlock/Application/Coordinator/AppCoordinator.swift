@@ -81,4 +81,9 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
+    func presentFinishView(_ wrongCnt: Int, onDismiss: (() -> ())?) {
+        let vc = FinishView.vc(self, wrongCnt: wrongCnt)
+        self.present(vc, animated: false, onDismiss: onDismiss)
+    }
+    
 }

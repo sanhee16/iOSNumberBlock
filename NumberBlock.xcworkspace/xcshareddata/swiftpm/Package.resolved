@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "fittedsheets",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gordontucker/FittedSheets.git",
+      "state" : {
+        "revision" : "5d7f5a6307ad510aa05de5a4a16ac40846d3b2d3",
+        "version" : "2.6.1"
+      }
+    },
+    {
       "identity" : "googleappmeasurement",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
@@ -82,6 +91,15 @@
       }
     },
     {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios.git",
+      "state" : {
+        "revision" : "45517c3cfec9469bbdd4f86e32393c28ae9df0bc",
+        "version" : "4.3.3"
+      }
+    },
+    {
       "identity" : "nanopb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/nanopb.git",
@@ -124,6 +142,15 @@
       "state" : {
         "revision" : "3c54ab05249f59f2c6641dd2920b8358ea9ed127",
         "version" : "1.24.0"
+      }
+    },
+    {
+      "identity" : "swiftuipager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fermoya/SwiftUIPager.git",
+      "state" : {
+        "revision" : "4ddc04c801aac143090bb14cf26603a3bf9c74cb",
+        "version" : "2.5.0"
       }
     }
   ],

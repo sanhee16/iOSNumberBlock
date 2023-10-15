@@ -23,6 +23,8 @@ class QuizViewModel: BaseViewModel {
     var hintingCount: Int = 0
     @Published var isHinting: Bool = false
     @Published var isBlinking: Bool = false
+    var wrongCnt: Int = 0
+    var wrongPage: Set<Int> = []
     
     
     let level: Level
@@ -65,21 +67,24 @@ class QuizViewModel: BaseViewModel {
     
     func onClickMoveNext() {
         if pageIdx == self.quizList.count - 1 {
+            // 마지막
+            self.coordinator?.presentFinishView(self.wrongCnt) {[weak self] in
+                self?.dismiss()
+            }
             return
         }
         let currentQuiz = self.quizList[self.pageIdx]
-//        print("cnt: \(self.quizList.count) // pageIdx: \(self.pageIdx)")
         if currentQuiz.isSolved {
             self.updatePage(1)
         } else {
-            print("answer: \(currentQuiz.answer)")
-            print("userAnswer: \(self.userAnswer)")
             if currentQuiz.answer == self.userAnswer {
                 self.quizList[self.pageIdx].isSolved = true
                 self.updateStatus(.correct)
                 self.updatePage(1)
             } else {
                 self.updateStatus(.incorrect)
+                self.wrongCnt += 1
+                self.wrongPage.insert(currentQuiz.idx)
                 return
             }
         }
@@ -89,7 +94,7 @@ class QuizViewModel: BaseViewModel {
         self.userAnswer = 0
         self.pageIdx = page.index
         self.enableMoveToBefore = self.pageIdx > 0
-        self.enableMoveToNext = self.pageIdx < self.quizList.count - 1
+//        self.enableMoveToNext = self.pageIdx < self.quizList.count - 1
     }
     
     func onClickAnswerBlock(_ idx: Int, unit: Int) {
