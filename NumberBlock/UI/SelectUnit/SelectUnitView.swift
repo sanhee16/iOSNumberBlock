@@ -59,20 +59,29 @@ struct SelectUnitView: View {
     }
     
     private func unitItem(_ geometry: GeometryProxy, unit: Unit) -> some View {
-        return HStack(alignment: .center, spacing: 6) {
-            if unit.openTime == 0 {
-                Image(systemName: "lock.fill")
-                    .scaledToFit()
-                    .frame(both: 14.0)
+        return ZStack(alignment: .center) {
+            HStack(alignment: .center, spacing: 0) {
+                if unit.openTime == 0 {
+                    Image(systemName: "lock.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(both: 24.0)
+                }
+                Spacer()
             }
-            VStack(alignment: .center, spacing: 4) {
-                Text(unit.title)
-                    .font(.kr18r)
-                    .foregroundColor(.black)
-                Text(unit.subTitle)
-                    .font(.kr14r)
-                    .foregroundColor(.gray60)
-                
+            .paddingLeading(16)
+            HStack(alignment: .center, spacing: 6) {
+                Spacer()
+                VStack(alignment: .center, spacing: 4) {
+                    Text(unit.title)
+                        .font(.kr18r)
+                        .foregroundColor(.black)
+                    Text(unit.subTitle)
+                        .font(.kr14r)
+                        .foregroundColor(.gray60)
+                    
+                }
+                Spacer()
             }
         }
         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
