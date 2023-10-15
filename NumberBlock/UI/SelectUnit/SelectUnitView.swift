@@ -24,7 +24,19 @@ struct SelectUnitView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Topbar("Unit 선택하기", type: .none, textColor: .black)
+                ZStack(alignment: .center) {
+                    Topbar("Unit 선택하기", type: .none, textColor: .black)
+                    HStack(alignment: .center, spacing: 0) {
+                        Spacer()
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .frame(both: 20.0, aligment: .center)
+                            .onTapGesture {
+                                vm.onClickSetting()
+                            }
+                    }
+                    .paddingHorizontal(14)
+                }
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 0) {
                         ForEach($vm.list.wrappedValue.indices, id: \.self) { idx in

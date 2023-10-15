@@ -36,4 +36,7 @@ class SelectUnitViewModel: BaseViewModel {
         return
     }
     
+    func onClickSetting() {
+        self.coordinator?.presentSettingView()
+    }
 }

@@ -76,4 +76,9 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: false)
     }
     
+    func presentSettingView() {
+        let vc = SettingView.vc(self, setAdminUseCase: appDIContainer.setAdminUseCase, settingUseCase: appDIContainer.settingUseCase)
+        self.present(vc, animated: true)
+    }
+    
 }
