@@ -83,7 +83,7 @@ struct QuizView: View {
 struct QuizItemView: View {
     typealias VM = QuizViewModel
     
-    private let blockSize: CGFloat = UIScreen.main.bounds.height / 19
+    private let blockSize: CGFloat = UIScreen.main.bounds.height / 18
     
     @ObservedObject var vm: VM
     var item: Quiz

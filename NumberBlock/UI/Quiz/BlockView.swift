@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct QuestionBlock: View {
-    private let blockSize: CGFloat = UIScreen.main.bounds.height / 19
+    private let blockSize: CGFloat = UIScreen.main.bounds.height / 18
     var block: Int
     
     init(block: Int) {
@@ -19,7 +19,7 @@ struct QuestionBlock: View {
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             Spacer()
-            LazyHGrid(rows: Array(repeating: .init(.fixed(blockSize), spacing: 0), count: 5), spacing: 0) {
+            LazyHGrid(rows: Array(repeating: .init(.fixed(blockSize), spacing: 0.5), count: 5), spacing: 0.5) {
                 ForEach(0..<10, id: \.self) { idx in
                     RoundedRectangle(cornerRadius: 10)
                         .frame(both: blockSize)
