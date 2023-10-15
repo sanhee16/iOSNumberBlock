@@ -25,7 +25,7 @@ struct SelectUnitView: View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
                 ZStack(alignment: .center) {
-                    Topbar("Unit 선택하기", type: .none, textColor: .black)
+                    Topbar("단계 선택하기", type: .none, textColor: .black)
                     HStack(alignment: .center, spacing: 0) {
                         Spacer()
                         Image(systemName: "gearshape.fill")

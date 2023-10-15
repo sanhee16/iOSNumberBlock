@@ -24,7 +24,7 @@ struct SelectLevelView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Topbar("Unit \(vm.unit.idx + 1)", type: .back, textColor: .black) {
+                Topbar(vm.unit.title, type: .back, textColor: .black) {
                     vm.onClose()
                 }
                 ScrollView(.vertical, showsIndicators: false) {
