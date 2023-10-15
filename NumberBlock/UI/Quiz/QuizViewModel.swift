@@ -13,10 +13,11 @@ import SwiftUI
 
 class QuizViewModel: BaseViewModel {
     @Published var page: Page = .withIndex(0)
-    @Published var pageIdx: Int = 0
+    private var pageIdx: Int = 0
     @Published var quizList: [Quiz] = []
     @Published var enableMoveToBefore: Bool = false
     @Published var enableMoveToNext: Bool = true
+    
     @Published var status: QuizScoreStatus = .none
     @Published var userAnswer: Int = 0
     
@@ -46,12 +47,16 @@ class QuizViewModel: BaseViewModel {
         
     }
     
+    func updatePage(_ move: Int) {
+        self.page.update(.move(increment: move))
+        self.updateMoveButton()
+    }
+    
     func onClickMoveBefore() {
         if pageIdx == 0 {
             return
         }
-        self.page.update(.move(increment: -1))
-        updateMoveButton()
+        self.updatePage(-1)
     }
     
     func onClickMoveNext() {
@@ -61,18 +66,17 @@ class QuizViewModel: BaseViewModel {
         let currentQuiz = self.quizList[self.pageIdx]
 //        print("cnt: \(self.quizList.count) // pageIdx: \(self.pageIdx)")
         if currentQuiz.isSolved {
-            self.page.update(.move(increment: 1))
+            self.updatePage(1)
         } else {
             if currentQuiz.answer == self.userAnswer {
                 self.quizList[self.pageIdx].isSolved = true
                 self.updateStatus(.correct)
-                self.page.update(.move(increment: 1))
+                self.updatePage(1)
             } else {
                 self.updateStatus(.incorrect)
                 return
             }
         }
-        updateMoveButton()
     }
     
     func updateMoveButton() {
@@ -87,13 +91,15 @@ class QuizViewModel: BaseViewModel {
         return userAnswer == item.answer
     }
     
-    func onClickAnswerBlock(_ idx: Int) {
-        switch self.userAnswer {
+    func onClickAnswerBlock(_ idx: Int, unit: Int) {
+        switch (self.userAnswer % (unit * 10)) / unit {
         case idx + 1:
-            self.userAnswer -= 1
+            self.userAnswer -= (1 * unit)
+            print("userAnswer: \(userAnswer)")
             return
         case idx:
-            self.userAnswer += 1
+            self.userAnswer += (1 * unit)
+            print("userAnswer: \(userAnswer)")
             return
         default:
             return

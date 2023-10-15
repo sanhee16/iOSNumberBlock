@@ -9,10 +9,6 @@ import Foundation
 import RealmSwift
 
 extension Quiz: Entity {
-    var answer: Int {
-        self.block1.num + self.block2.num
-    }
-    
     private var storableQuiz: QuizStorage {
         let realm = QuizStorage()
         realm.uuid = uuid
@@ -20,8 +16,9 @@ extension Quiz: Entity {
         realm.levelIdx = levelIdx
         realm.completeTime = completeTime
         
-        realm.block1Num = block1.num
-        realm.block2Num = block2.num
+        realm.block1 = block1
+        realm.block2 = block2
+        realm.answer = answer
         return realm
     }
     
@@ -38,12 +35,13 @@ class QuizStorage: Object, Storable {
     @Persisted var levelIdx: Int
     @Persisted var completeTime: Int = 0
     
-    @Persisted var block1Num: Int
-    @Persisted var block2Num: Int
+    @Persisted var block1: Int
+    @Persisted var block2: Int
+    @Persisted var answer: Int
     
     var model: Quiz {
         get {
-            return Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, isSolved: false, completeTime: completeTime, block1: Block(num: block1Num), block2: Block(num: block2Num))
+            return Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, isSolved: false, completeTime: completeTime, block1: block1, block2: block2, answer: answer)
         }
     }
 }

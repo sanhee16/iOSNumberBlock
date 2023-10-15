@@ -74,9 +74,9 @@ final class DefaultInitalizeDBUseCase: InitalizeDBUseCase {
                 let idx = Int(item[0]) ?? 0
                 let uuid = item[1]
                 let levelIdx = Int(item[2]) ?? 0
-                let block1Num = Int(item[3]) ?? 0
-                let block2Num = Int(item[4]) ?? 0
-                try? self.quizRepository.insert(item: Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, block1: Block(num: block1Num), block2: Block(num: block2Num)))
+                let block1 = Int(item[3]) ?? 0
+                let block2 = Int(item[4]) ?? 0
+                try? self.quizRepository.insert(item: Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, block1: block1, block2: block2, answer: (block1 < 0 ? 0 : block1) + block2))
             }
         } err: { err in
             print(err)

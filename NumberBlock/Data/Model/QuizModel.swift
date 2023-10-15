@@ -18,6 +18,7 @@ struct Quiz: Equatable, Hashable {
     var completeTime: Int = 0 // 문제 푼 날짜 epochTime
     var score: Int = 0
     
-    var block1: Block
-    var block2: Block
+    var block1: Int
+    var block2: Int
+    var answer: Int
 }

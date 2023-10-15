@@ -62,6 +62,7 @@
 		26931BAC2AD947CC00EA6594 /* DownloadDBUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26931BAB2AD947CC00EA6594 /* DownloadDBUseCase.swift */; };
 		26931BAF2AD948DC00EA6594 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26931BAE2AD948DC00EA6594 /* FirebaseFirestore */; };
 		26931BB12AD948DC00EA6594 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26931BB02AD948DC00EA6594 /* FirebaseFirestoreSwift */; };
+		26931BB52AD960F800EA6594 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26931BB42AD960F800EA6594 /* BlockView.swift */; };
 		26A3AC332AB845530094768C /* Pods_NumberBlock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792D1444DC3C7FD97143B4C8 /* Pods_NumberBlock.framework */; };
 		26ED56012A2C0EAB006A8810 /* loading_circular.json in Resources */ = {isa = PBXBuildFile; fileRef = 26ED55FE2A2C0EAA006A8810 /* loading_circular.json */; };
 		26ED56022A2C0EAB006A8810 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 26ED55FF2A2C0EAB006A8810 /* loading.json */; };
@@ -130,6 +131,7 @@
 		26900A172A2B26D700653275 /* SwiftExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftExtension.swift; sourceTree = "<group>"; };
 		26900A1B2A2B28DD00653275 /* SProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SProgress.swift; sourceTree = "<group>"; };
 		26931BAB2AD947CC00EA6594 /* DownloadDBUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDBUseCase.swift; sourceTree = "<group>"; };
+		26931BB42AD960F800EA6594 /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
 		26ED55FE2A2C0EAA006A8810 /* loading_circular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_circular.json; sourceTree = "<group>"; };
 		26ED55FF2A2C0EAB006A8810 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		26ED56002A2C0EAB006A8810 /* loading_bar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_bar.json; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				26353E6C2AB856B70050D4FE /* QuizView.swift */,
 				26353E6E2AB856BD0050D4FE /* QuizViewModel.swift */,
 				26353E702AB85B9D0050D4FE /* QuizData.swift */,
+				26931BB42AD960F800EA6594 /* BlockView.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				267019D02A2C5212001C18B5 /* C.swift in Sources */,
 				26155AE42AD40CA100FEC8BF /* SelectLevelViewModel.swift in Sources */,
 				26ED56342A2C218C006A8810 /* AdView.swift in Sources */,
+				26931BB52AD960F800EA6594 /* BlockView.swift in Sources */,
 				26900A032A2B252A00653275 /* BaseViewController.swift in Sources */,
 				26900A1C2A2B28DD00653275 /* SProgress.swift in Sources */,
 				269009FE2A2B248200653275 /* AppDelegate.swift in Sources */,

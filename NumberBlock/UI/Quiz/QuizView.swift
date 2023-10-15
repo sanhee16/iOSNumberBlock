@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import SwiftUIPager
 
-
 struct QuizView: View {
     typealias VM = QuizViewModel
     
@@ -28,11 +27,10 @@ struct QuizView: View {
     private var safeTop: CGFloat { get { Util.safeTop() }}
     private var safeBottom: CGFloat { get { Util.safeBottom() }}
     
-    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Topbar("Quiz\(vm.level.title)", type: .back, textColor: .black) {
+                Topbar(vm.level.title, type: .back, textColor: .black) {
                     vm.onClose()
                 }
                 Pager(page: $vm.page.wrappedValue, data: $vm.quizList.wrappedValue.indices, id: \.self) { idx in
@@ -40,13 +38,11 @@ struct QuizView: View {
                     QuizItemView(vm: vm, item: quizItem)
                 }
                 .allowsDragging(false)
-                .background(Color.blue.opacity(0.2))
                 Spacer()
                 drawBottom(geometry)
                 Spacer()
             }
             .frame(width: geometry.size.width, alignment: .center)
-            .background(Color.green.opacity(0.3))
         }
         .onAppear {
             vm.onAppear()
@@ -103,11 +99,12 @@ struct QuizItemView: View {
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
                     HStack(alignment: .center, spacing: 20) {
-                        drawBlockBox(item.block1)
-                        drawBlockBox(item.block2)
+                        QuestionBlock(block: item.block1)
+                        QuestionBlock(block: item.block2)
                     }
-                    Spacer()
-                    drawAnswerBlockBox()
+                    .paddingBottom(20)
+
+                    drawAnswerBlock()
                     Spacer()
                 }
                 if let imageName = $vm.status.wrappedValue.imageName {
@@ -120,22 +117,25 @@ struct QuizItemView: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+            .padding(top: 10, leading: 20, bottom: 10, trailing: 20)
             .frame(width: geometry.size.width, alignment: .center)
         }
         .environmentObject(vm)
     }
     
-    
-    private func drawBlockBox(_ block: Block) -> some View {
-        return LazyHGrid(rows: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 5), spacing: 0.5) {
-            ForEach(0..<10, id: \.self) { i in
-                RoundedRectangle(cornerRadius: 10)
-                    .frame(both: blockSize)
-                    .foregroundColor(i < block.num ? QuizAnswer(rawValue: block.num)?.selectedColor : .unSelected)
+    private func drawAnswerBlock() -> some View {
+        return HStack(alignment: .center, spacing: 18) {
+            Spacer()
+            if item.answer > 100 {
+                drawBlock(100)
             }
+            if item.answer > 10 {
+                drawBlock(10)
+            }
+            drawBlock(1)
+            Spacer()
         }
-        .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+        .padding(14)
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(.white)
@@ -143,38 +143,33 @@ struct QuizItemView: View {
         .border(.black.opacity(0.3), lineWidth: 3, cornerRadius: 20)
     }
     
-    
-    private func drawAnswerBlockBox() -> some View {
+    private func drawBlock(_ unit: Int) -> some View {
+        //TODO: 여기 로직 고쳐야됨 ㅠㅠ
+        
+        let cnt = (($vm.userAnswer.wrappedValue % (unit * 10)) / unit)
         return VStack(alignment: .center, spacing: 8) {
             LazyHGrid(rows: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 5), spacing: 0.5) {
-                ForEach(0..<$vm.quizList.wrappedValue.count, id: \.self) { idx in
+                ForEach(0..<10, id: \.self) { idx in
                     ZStack(alignment: .center) {
                         RoundedRectangle(cornerRadius: 10)
-                        Text("1")
+                        Text("\(unit)")
                             .font(.kr16b)
                             .foregroundColor(.black)
                             .zIndex(1)
                     }
                     .frame(both: blockSize)
                     .foregroundColor(
-                        idx < $vm.userAnswer.wrappedValue ? QuizAnswer(rawValue: $vm.userAnswer.wrappedValue)?.selectedColor : .unSelected
+                        idx < cnt ? QuizAnswer(rawValue: cnt)?.selectedColor : .unSelected
                     )
                     .id(idx)
                     .onTapGesture {
-                        vm.onClickAnswerBlock(idx)
+                        vm.onClickAnswerBlock(idx, unit: unit)
                     }
                 }
             }
-            Text("\($vm.userAnswer.wrappedValue)")
+            Text("\(cnt * unit)")
                 .font(.kr20b)
-            
         }
-        .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.white)
-        )
-        .border(.black.opacity(0.3), lineWidth: 3, cornerRadius: 20)
     }
 }
 
