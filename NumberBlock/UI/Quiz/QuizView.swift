@@ -113,8 +113,12 @@ struct QuizItemView: View {
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
                     HStack(alignment: .center, spacing: 20) {
-                        QuestionBlock(block: item.block1)
-                        QuestionBlock(block: item.block2)
+                        if item.block1 >= 0 {
+                            QuestionBlock(block: item.block1)
+                        }
+                        if item.block2 >= 0 {
+                            QuestionBlock(block: item.block2)
+                        }
                     }
                     .paddingBottom(20)
                     

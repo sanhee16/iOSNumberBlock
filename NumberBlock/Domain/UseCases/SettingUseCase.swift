@@ -45,7 +45,7 @@ final class DefaultSettingUseCase: SettingUseCase {
             try? levelRepository.update(item: updatedItem)
         }
         for item in quizList {
-            var updatedItem = Quiz(uuid: item.uuid, idx: item.idx, levelIdx: item.levelIdx, isSolved: false, completeTime: 0, score: 0, block1: item.block1, block2: item.block1, answer: item.answer)
+            let updatedItem = Quiz(uuid: item.uuid, idx: item.idx, levelIdx: item.levelIdx, isSolved: false, completeTime: 0, score: 0, block1: item.block1, block2: item.block2, answer: item.answer)
             try? quizRepository.update(item: updatedItem)
         }
         onComplete()
