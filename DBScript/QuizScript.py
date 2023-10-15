@@ -83,6 +83,8 @@ for order in range(len(levels)):
             quizIdx += 1
 
         levelIdx += 1
+        if order == 0:
+            break
 
 print(arr)
 
