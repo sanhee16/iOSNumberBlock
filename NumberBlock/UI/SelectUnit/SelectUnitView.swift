@@ -35,7 +35,7 @@ struct SelectUnitView: View {
                                 vm.onClickSetting()
                             }
                     }
-                    .paddingHorizontal(14)
+                    .paddingHorizontal(10)
                 }
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 0) {

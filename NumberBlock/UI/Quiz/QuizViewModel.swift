@@ -20,6 +20,10 @@ class QuizViewModel: BaseViewModel {
     
     @Published var status: QuizScoreStatus = .none
     @Published var userAnswer: Int = 0
+    var hintingCount: Int = 0
+    @Published var isHinting: Bool = false
+    @Published var isBlinking: Bool = false
+    
     
     let level: Level
     private let fetchQuizListUseCase: FetchQuizListUseCase
@@ -109,6 +113,24 @@ class QuizViewModel: BaseViewModel {
             guard let self = self else { return }
             self.status = .none
             onComplete?()
+        }
+    }
+    
+    func onClickHint() {
+        if self.isHinting {
+            return
+        }
+        self.isHinting = true
+        withAnimation {
+            self.isBlinking = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) { [weak self] in
+            withAnimation {
+                self?.isBlinking = false
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.isHinting = false
         }
     }
 }

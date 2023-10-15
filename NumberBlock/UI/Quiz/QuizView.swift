@@ -30,9 +30,23 @@ struct QuizView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Topbar(vm.level.title, type: .back, textColor: .black) {
-                    vm.onClose()
+                ZStack(alignment: .center) {
+                    Topbar(vm.level.title, type: .back, textColor: .black) {
+                        vm.onClose()
+                    }
+                    HStack(alignment: .center, spacing: 0) {
+                        Spacer()
+                        Image(systemName: "lightbulb.fill")
+                            .resizable()
+                            .frame(width: 14.0, height: 20.0, alignment: .center)
+                            .foregroundColor(Color.yellow)
+                            .onTapGesture {
+                                vm.onClickHint()
+                            }
+                    }
+                    .paddingHorizontal(10)
                 }
+                
                 Pager(page: $vm.page.wrappedValue, data: $vm.quizList.wrappedValue.indices, id: \.self) { idx in
                     let quizItem = $vm.quizList.wrappedValue[idx]
                     QuizItemView(vm: vm, item: quizItem)
@@ -103,8 +117,8 @@ struct QuizItemView: View {
                         QuestionBlock(block: item.block2)
                     }
                     .paddingBottom(20)
-
-                    drawAnswerBlock()
+                    
+                    drawAnswerBlock(item)
                     Spacer()
                 }
                 if let imageName = $vm.status.wrappedValue.imageName {
@@ -123,16 +137,16 @@ struct QuizItemView: View {
         .environmentObject(vm)
     }
     
-    private func drawAnswerBlock() -> some View {
+    private func drawAnswerBlock(_ quiz: Quiz) -> some View {
         return HStack(alignment: .center, spacing: 18) {
             Spacer()
             if item.answer > 100 {
-                drawBlock(100)
+                drawBlock(100, quiz: quiz)
             }
             if item.answer > 10 {
-                drawBlock(10)
+                drawBlock(10, quiz: quiz)
             }
-            drawBlock(1)
+            drawBlock(1, quiz: quiz)
             Spacer()
         }
         .padding(14)
@@ -143,10 +157,11 @@ struct QuizItemView: View {
         .border(.black.opacity(0.3), lineWidth: 3, cornerRadius: 20)
     }
     
-    private func drawBlock(_ unit: Int) -> some View {
+    private func drawBlock(_ unit: Int, quiz: Quiz) -> some View {
         //TODO: 여기 로직 고쳐야됨 ㅠㅠ
         
         let cnt = (($vm.userAnswer.wrappedValue % (unit * 10)) / unit)
+        let answer = ((quiz.answer % (unit * 10)) / unit)
         return VStack(alignment: .center, spacing: 8) {
             LazyHGrid(rows: Array(repeating: .init(.fixed(blockSize), spacing:  0.5), count: 5), spacing: 0.5) {
                 ForEach(0..<10, id: \.self) { idx in
@@ -155,24 +170,27 @@ struct QuizItemView: View {
                         Text("\(unit)")
                             .font(.kr16b)
                             .foregroundColor(.black)
-                            .zIndex(1)
+                            .zIndex(2)
                     }
                     .frame(both: blockSize)
                     .foregroundColor(
-                        idx < cnt ? QuizAnswer(rawValue: cnt)?.selectedColor : .unSelected
+                        $vm.isBlinking.wrappedValue
+                        ? idx < answer ? QuizAnswer(rawValue: answer)?.selectedColor.opacity(0.4) : .unSelected
+                        : idx < cnt ? QuizAnswer(rawValue: cnt)?.selectedColor : .unSelected
                     )
                     .id(idx)
                     .onTapGesture {
-                        vm.onClickAnswerBlock(idx, unit: unit)
+                        if !$vm.isHinting.wrappedValue {
+                            vm.onClickAnswerBlock(idx, unit: unit)
+                        }
                     }
                 }
             }
-            Text("\(cnt * unit)")
+            Text($vm.isHinting.wrappedValue ? " " : "\(cnt * unit)")
                 .font(.kr20b)
         }
     }
 }
-
 
 //struct QuizView_Previews: PreviewProvider {
 //    static var previews: some View {
