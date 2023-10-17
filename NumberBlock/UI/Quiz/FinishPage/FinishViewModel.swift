@@ -10,13 +10,18 @@ import Combine
 import SwiftUIPager
 import SwiftUI
 
+enum FinishType {
+    case reset
+    case nextStep
+}
 
 class FinishViewModel: BaseViewModel {
     let wrongCnt: Int
     @Published var star: Int = 3
-    
-    init(_ coordinator: AppCoordinator, wrongCnt: Int) {
+    let onClickButton: (FinishType)->()
+    init(_ coordinator: AppCoordinator, wrongCnt: Int, onClickButton: @escaping (FinishType)->()) {
         self.wrongCnt = wrongCnt
+        self.onClickButton = onClickButton
         super.init(coordinator)
     }
     
@@ -43,5 +48,13 @@ class FinishViewModel: BaseViewModel {
     
     func onClose() {
         self.dismiss()
+    }
+    
+    func onClickNextStep() {
+        self.onClickButton(.nextStep)
+    }
+    
+    func onClickReset() {
+        self.onClickButton(.reset)
     }
 }

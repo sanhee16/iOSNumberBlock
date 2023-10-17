@@ -66,9 +66,14 @@ class QuizViewModel: BaseViewModel {
     }
     
     func onClickMoveNext() {
+        self.coordinator?.presentFinishView(self.wrongCnt) {[weak self] type in
+            self?.dismiss()
+        }
+        return
+        
         if pageIdx == self.quizList.count - 1 {
             // 마지막
-            self.coordinator?.presentFinishView(self.wrongCnt) {[weak self] in
+            self.coordinator?.presentFinishView(self.wrongCnt) {[weak self] type in
                 self?.dismiss()
             }
             return

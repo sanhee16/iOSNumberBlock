@@ -12,10 +12,10 @@ import Lottie
 struct FinishView: View {
     typealias VM = FinishViewModel
     
-    public static func vc(_ coordinator: AppCoordinator, wrongCnt: Int, completion: (()-> Void)? = nil) -> UIViewController {
-        let vm = VM.init(coordinator, wrongCnt: wrongCnt)
+    public static func vc(_ coordinator: AppCoordinator, wrongCnt: Int, onClickButton: @escaping (FinishType)->()) -> UIViewController {
+        let vm = VM.init(coordinator, wrongCnt: wrongCnt, onClickButton: onClickButton)
         let view = Self.init(vm: vm)
-        let vc = BaseViewController.init(view, completion: completion)
+        let vc = BaseViewController.init(view)
         vc.modalPresentationStyle = .overCurrentContext
         vc.view.backgroundColor = UIColor.clear
         vc.controller.view.backgroundColor = UIColor.dim
@@ -35,6 +35,7 @@ struct FinishView: View {
             ZStack(alignment: .center) {
                 LottieView(filename: "congratulations")
                     .frame(width: UIScreen.main.bounds.width - 60, height: 150, alignment: .center)
+                    .zIndex(0)
                 VStack(alignment: .center, spacing: 0) {
                     HStack(alignment: .center, spacing: 12) {
                         ForEach(0..<3, id: \.self) { i in
@@ -44,13 +45,41 @@ struct FinishView: View {
                                 .frame(both: 46.0)
                         }
                     }
-                    .zIndex(1)
                     .frame(width: UIScreen.main.bounds.width - 60, height: 100, alignment: .center)
                     Spacer()
+                    HStack(alignment: .center, spacing: 10) {
+                        Text("다시 풀기")
+                            .font(.kr16r)
+                            .foregroundColor(.black)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .foregroundColor(.gray30)
+                                    .frame(width: (UIScreen.main.bounds.width - 60 - 30) / 2, height: 40, alignment: .center)
+                            )
+                            .frame(width: (UIScreen.main.bounds.width - 60 - 30) / 2, height: 40, alignment: .center)
+                            .onTapGesture {
+                                vm.onClickReset()
+                            }
+                        Text("다음 단계")
+                            .font(.kr16r)
+                            .foregroundColor(.black)
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .foregroundColor(.primeColor1)
+                                    .frame(width: (UIScreen.main.bounds.width - 60 - 30) / 2, height: 40, alignment: .center)
+                            )
+                            .frame(width: (UIScreen.main.bounds.width - 60 - 30) / 2, height: 40, alignment: .center)
+                            .onTapGesture {
+                                vm.onClickNextStep()
+                            }
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 60, height: 40, alignment: .center)
+                    .padding(top: 0, leading: 10, bottom: 10, trailing: 10)
                 }
-                .frame(width: UIScreen.main.bounds.width - 60, height: 150, alignment: .center)
+                .zIndex(1)
+                .frame(width: UIScreen.main.bounds.width - 60, height: 180, alignment: .center)
             }
-            .frame(width: UIScreen.main.bounds.width - 60, height: 150, alignment: .center)
+            .frame(width: UIScreen.main.bounds.width - 60, height: 180, alignment: .center)
         }
         .frame(width: UIScreen.main.bounds.width - 60, alignment: .center)
         .background(
