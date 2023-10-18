@@ -12,8 +12,8 @@ import Lottie
 struct FinishView: View {
     typealias VM = FinishViewModel
     
-    public static func vc(_ coordinator: AppCoordinator, wrongCnt: Int, onClickButton: @escaping (FinishType)->()) -> UIViewController {
-        let vm = VM.init(coordinator, wrongCnt: wrongCnt, onClickButton: onClickButton)
+    public static func vc(_ coordinator: AppCoordinator, score: Int, onClickButton: @escaping (FinishType)->()) -> UIViewController {
+        let vm = VM.init(coordinator, score: score, onClickButton: onClickButton)
         let view = Self.init(vm: vm)
         let vc = BaseViewController.init(view)
         vc.modalPresentationStyle = .overCurrentContext
@@ -39,9 +39,9 @@ struct FinishView: View {
                 VStack(alignment: .center, spacing: 0) {
                     HStack(alignment: .center, spacing: 12) {
                         ForEach(0..<3, id: \.self) { i in
-                            Image(systemName: $vm.star.wrappedValue > i ? "star.fill" : "star")
+                            Image(systemName: $vm.score.wrappedValue > i ? "star.fill" : "star")
                                 .resizable()
-                                .foregroundColor($vm.star.wrappedValue > i ? .yellow : .gray90)
+                                .foregroundColor($vm.score.wrappedValue > i ? .yellow : .gray90)
                                 .frame(both: 46.0)
                         }
                     }
@@ -58,7 +58,7 @@ struct FinishView: View {
                             )
                             .frame(width: (UIScreen.main.bounds.width - 60 - 30) / 2, height: 40, alignment: .center)
                             .onTapGesture {
-                                vm.onClickReset()
+                                vm.onClickButton(.reset)
                             }
                         Text("다음 단계")
                             .font(.kr16r)
@@ -70,7 +70,7 @@ struct FinishView: View {
                             )
                             .frame(width: (UIScreen.main.bounds.width - 60 - 30) / 2, height: 40, alignment: .center)
                             .onTapGesture {
-                                vm.onClickNextStep()
+                                vm.onClickButton(.nextStep)
                             }
                     }
                     .frame(width: UIScreen.main.bounds.width - 60, height: 40, alignment: .center)

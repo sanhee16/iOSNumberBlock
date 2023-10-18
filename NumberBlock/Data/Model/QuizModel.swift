@@ -15,8 +15,6 @@ struct Quiz: Equatable, Hashable {
     var idx: Int // idx, 순서
     var levelIdx: Int // Level Idx
     var isSolved: Bool = false
-    var completeTime: Int = 0 // 문제 푼 날짜 epochTime
-    var score: Int = 0
     
     var block1: Int
     var block2: Int

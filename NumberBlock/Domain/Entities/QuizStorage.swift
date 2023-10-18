@@ -14,7 +14,6 @@ extension Quiz: Entity {
         realm.uuid = uuid
         realm.idx = idx
         realm.levelIdx = levelIdx
-        realm.completeTime = completeTime
         
         realm.block1 = block1
         realm.block2 = block2
@@ -33,7 +32,6 @@ class QuizStorage: Object, Storable {
     @Persisted(primaryKey: true) var uuid: String
     @Persisted var idx: Int
     @Persisted var levelIdx: Int
-    @Persisted var completeTime: Int = 0
     
     @Persisted var block1: Int
     @Persisted var block2: Int
@@ -41,7 +39,7 @@ class QuizStorage: Object, Storable {
     
     var model: Quiz {
         get {
-            return Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, isSolved: false, completeTime: completeTime, block1: block1, block2: block2, answer: answer)
+            return Quiz(uuid: uuid, idx: idx, levelIdx: levelIdx, isSolved: false, block1: block1, block2: block2, answer: answer)
         }
     }
 }

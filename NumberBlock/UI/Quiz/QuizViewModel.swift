@@ -26,13 +26,14 @@ class QuizViewModel: BaseViewModel {
     var wrongCnt: Int = 0
     var wrongPage: Set<Int> = []
     
-    
-    let level: Level
+    var level: Level
     private let fetchQuizListUseCase: FetchQuizListUseCase
+    private let solveQuizUseCase: SolveQuizUseCase
     
-    init(_ coordinator: AppCoordinator, level: Level, fetchQuizListUseCase: FetchQuizListUseCase) {
+    init(_ coordinator: AppCoordinator, level: Level, fetchQuizListUseCase: FetchQuizListUseCase, solveQuizUseCase: SolveQuizUseCase) {
         self.level = level
         self.fetchQuizListUseCase = fetchQuizListUseCase
+        self.solveQuizUseCase = solveQuizUseCase
         super.init(coordinator)
         self.fetchList()
     }
@@ -66,18 +67,33 @@ class QuizViewModel: BaseViewModel {
     }
     
     func onClickMoveNext() {
-        self.coordinator?.presentFinishView(self.wrongCnt) {[weak self] type in
-            self?.dismiss()
+        let score = self.calcScore(self.wrongCnt)
+        self.coordinator?.presentFinishView(score) {[weak self] type in
+            guard let self = self else { return }
+            switch type {
+            case .nextStep:
+                self.solveQuizUseCase.execute(self.level.idx, score: score)
+                //TODO: 다음 레벨!
+                self.dismiss()
+                break
+            case .reset:
+                self.quizList.indices.forEach { idx in
+                    self.quizList[idx].isSolved = false
+                }
+                self.updatePage(0)
+                break
+            }
         }
         return
         
-        if pageIdx == self.quizList.count - 1 {
-            // 마지막
-            self.coordinator?.presentFinishView(self.wrongCnt) {[weak self] type in
-                self?.dismiss()
-            }
-            return
-        }
+//        if (pageIdx == self.quizList.count - 1) {
+//            // 마지막
+//            self.coordinator?.presentFinishView(self.wrongCnt) {[weak self] type in
+//                self?.dismiss()
+//            }
+//            return
+//        }
+        
         let currentQuiz = self.quizList[self.pageIdx]
         if currentQuiz.isSolved {
             self.updatePage(1)
@@ -141,6 +157,19 @@ class QuizViewModel: BaseViewModel {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.isHinting = false
+        }
+    }
+    
+    private func calcScore(_ wrongCnt: Int) -> Int {
+        switch wrongCnt {
+        case 0:
+            return 3
+        case 1..<3:
+            return 2
+        case 3..<5:
+            return 1
+        default:
+            return 0
         }
     }
 }

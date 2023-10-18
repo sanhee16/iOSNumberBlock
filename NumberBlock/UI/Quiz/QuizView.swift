@@ -12,8 +12,8 @@ import SwiftUIPager
 struct QuizView: View {
     typealias VM = QuizViewModel
     
-    public static func vc(_ coordinator: AppCoordinator, level: Level, fetchQuizListUseCase: FetchQuizListUseCase, completion: (()-> Void)? = nil) -> UIViewController {
-        let vm = VM.init(coordinator, level: level, fetchQuizListUseCase: fetchQuizListUseCase)
+    public static func vc(_ coordinator: AppCoordinator, level: Level, fetchQuizListUseCase: FetchQuizListUseCase, solveQuizUseCase: SolveQuizUseCase, completion: (()-> Void)? = nil) -> UIViewController {
+        let vm = VM.init(coordinator, level: level, fetchQuizListUseCase: fetchQuizListUseCase, solveQuizUseCase: solveQuizUseCase)
         let view = Self.init(vm: vm)
         
         let vc = BaseViewController.init(view, completion: completion) {

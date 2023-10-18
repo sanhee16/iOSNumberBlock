@@ -8,5 +8,7 @@
 import Foundation
 
 class UnitRepository: AnyRepository<Unit> {
-    
+    func getUnitFromIdx(_ idx: Int) -> Unit? {
+        return self.getAll(where: NSPredicate(format: "idx == %d", idx)).first
+    }
 }

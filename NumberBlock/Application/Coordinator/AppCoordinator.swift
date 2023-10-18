@@ -67,7 +67,7 @@ class AppCoordinator: Coordinator, Terminatable {
     }
     
     func presentQuizView(level: Level) {
-        let vc = QuizView.vc(self, level: level, fetchQuizListUseCase: appDIContainer.fetchQuizListUseCase)
+        let vc = QuizView.vc(self, level: level, fetchQuizListUseCase: appDIContainer.fetchQuizListUseCase, solveQuizUseCase: appDIContainer.solveQuizUseCase)
         self.present(vc, animated: false)
     }
     
@@ -81,8 +81,8 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
-    func presentFinishView(_ wrongCnt: Int, onClickButton: @escaping (FinishType)->()) {
-        let vc = FinishView.vc(self, wrongCnt: wrongCnt, onClickButton: onClickButton)
+    func presentFinishView(_ score: Int, onClickButton: @escaping (FinishType)->()) {
+        let vc = FinishView.vc(self, score: score, onClickButton: onClickButton)
         self.present(vc, animated: false)
     }
     

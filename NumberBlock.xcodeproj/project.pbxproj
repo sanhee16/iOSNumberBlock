@@ -80,6 +80,7 @@
 		26931BAC2AD947CC00EA6594 /* DownloadDBUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26931BAB2AD947CC00EA6594 /* DownloadDBUseCase.swift */; };
 		26931BB52AD960F800EA6594 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26931BB42AD960F800EA6594 /* BlockView.swift */; };
 		26A3AC332AB845530094768C /* Pods_NumberBlock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 792D1444DC3C7FD97143B4C8 /* Pods_NumberBlock.framework */; };
+		26E2753F2ADE8059003AC1E8 /* SolveQuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E2753E2ADE8059003AC1E8 /* SolveQuizUseCase.swift */; };
 		26ED56012A2C0EAB006A8810 /* loading_circular.json in Resources */ = {isa = PBXBuildFile; fileRef = 26ED55FE2A2C0EAA006A8810 /* loading_circular.json */; };
 		26ED56022A2C0EAB006A8810 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 26ED55FF2A2C0EAB006A8810 /* loading.json */; };
 		26ED56032A2C0EAB006A8810 /* loading_bar.json in Resources */ = {isa = PBXBuildFile; fileRef = 26ED56002A2C0EAB006A8810 /* loading_bar.json */; };
@@ -156,6 +157,7 @@
 		26900A1B2A2B28DD00653275 /* SProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SProgress.swift; sourceTree = "<group>"; };
 		26931BAB2AD947CC00EA6594 /* DownloadDBUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDBUseCase.swift; sourceTree = "<group>"; };
 		26931BB42AD960F800EA6594 /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
+		26E2753E2ADE8059003AC1E8 /* SolveQuizUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveQuizUseCase.swift; sourceTree = "<group>"; };
 		26ED55FE2A2C0EAA006A8810 /* loading_circular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_circular.json; sourceTree = "<group>"; };
 		26ED55FF2A2C0EAB006A8810 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		26ED56002A2C0EAB006A8810 /* loading_bar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_bar.json; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				26931BAB2AD947CC00EA6594 /* DownloadDBUseCase.swift */,
 				263564B62ADBB903001F870C /* SetAdminUseCase.swift */,
 				263564B82ADBB9F6001F870C /* SettingUseCase.swift */,
+				26E2753E2ADE8059003AC1E8 /* SolveQuizUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				263564B22ADBB8B2001F870C /* SettingView.swift in Sources */,
 				263564C42ADC1285001F870C /* LottieView.swift in Sources */,
 				26155AE02AD406A000FEC8BF /* SelectUnitViewModel.swift in Sources */,
+				26E2753F2ADE8059003AC1E8 /* SolveQuizUseCase.swift in Sources */,
 				26155AD82AD3FCD400FEC8BF /* UnitRepository.swift in Sources */,
 				269009FB2A2B238300653275 /* Coordinator.swift in Sources */,
 				26900A0D2A2B25BC00653275 /* AlertViewModel.swift in Sources */,
